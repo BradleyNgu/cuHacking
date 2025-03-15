@@ -1,0 +1,11 @@
+2025-03-15 16:36:00, Class: 2, Confidence: 0.93, Sort As: Recycling
+2025-03-15 16:36:05, Class: 2, Confidence: 0.68, Sort As: Recycling
+2025-03-15 16:36:10, Class: 2, Confidence: 0.90, Sort As: Recycling
+2025-03-15 16:36:19, Class: 2, Confidence: 0.97, Sort As: Recycling
+2025-03-15 16:36:35, Class: 2, Confidence: 0.73, Sort As: Recycling
+2025-03-15 16:36:38, Class: 2, Confidence: 0.61, Sort As: Recycling
+2025-03-15 16:36:40, Class: 2, Confidence: 0.76, Sort As: Recycling
+2025-03-15 16:36:41, Class: 2, Confidence: 0.81, Sort As: Recycling
+2025-03-15 16:36:55, Class: 1, Confidence: 0.62, Sort As: Garbage
+2025-03-15 16:37:01, Class: 1, Confidence: 0.93, Sort As: Garbage
+2025-03-15 16:55:35, Class: 2, Confidence: 0.99, Sort As: Recycling
