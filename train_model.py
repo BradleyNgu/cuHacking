@@ -2,18 +2,27 @@
 import os
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.applications import MobileNetV2
-from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
-from tensorflow.keras.models import Model, load_model
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow import keras
+
+# Use keras from TensorFlow instead of tensorflow.keras
+MobileNetV2 = keras.applications.MobileNetV2
+Dense = keras.layers.Dense
+GlobalAveragePooling2D = keras.layers.GlobalAveragePooling2D
+Model = keras.models.Model
+load_model = keras.models.load_model
+Adam = keras.optimizers.Adam
+ModelCheckpoint = keras.callbacks.ModelCheckpoint
+EarlyStopping = keras.callbacks.EarlyStopping
+ReduceLROnPlateau = keras.callbacks.ReduceLROnPlateau
+ImageDataGenerator = keras.preprocessing.image.ImageDataGenerator
+
 import matplotlib.pyplot as plt
 import cv2
 import shutil
 from datetime import datetime
 import argparse
 import json
+
 
 class WasteClassifierTrainer:
     """Trainer for waste classification model"""
