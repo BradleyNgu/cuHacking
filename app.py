@@ -5,9 +5,7 @@ import os
 import json
 from datetime import datetime, timedelta
 import pandas as pd
-import numpy as np
 import io
-import base64
 from PIL import Image
 
 # Set up the Flask application
@@ -54,7 +52,7 @@ def get_daily_statistics(days=30):
     """Get daily statistics for charts"""
     conn = get_db_connection()
     stats = conn.execute(
-        'SELECT date, can_count, recycling_count, garbage_count, total_count, token_rewards FROM statistics ORDER BY date ASC LIMIT ?',
+        'SELECT date, can_count, recycling_count, garbage_count, total_count FROM statistics ORDER BY date ASC LIMIT ?',
         (days,)
     ).fetchall()
     conn.close()
@@ -70,8 +68,7 @@ def get_total_statistics():
             SUM(can_count) as total_cans,
             SUM(recycling_count) as total_recycling,
             SUM(garbage_count) as total_garbage,
-            SUM(total_count) as grand_total,
-            SUM(token_rewards) as total_rewards
+            SUM(total_count) as grand_total
         FROM statistics
     ''').fetchone()
     conn.close()
@@ -83,76 +80,8 @@ def get_total_statistics():
             'total_cans': 0,
             'total_recycling': 0,
             'total_garbage': 0,
-            'grand_total': 0,
-            'total_rewards': 0
+            'grand_total': 0
         }
-
-# Function to get token statistics
-def get_token_statistics():
-    """Get token statistics"""
-    conn = get_db_connection()
-    
-    # Top users by token balance
-    top_users = conn.execute('''
-        SELECT username, token_balance 
-        FROM users 
-        ORDER BY token_balance DESC 
-        LIMIT 10
-    ''').fetchall()
-    
-    # Recent token transactions
-    recent_transactions = conn.execute('''
-        SELECT t.timestamp, u.username, t.amount, t.transaction_type
-        FROM token_transactions t
-        JOIN users u ON t.user_id = u.id
-        ORDER BY t.timestamp DESC
-        LIMIT 20
-    ''').fetchall()
-    
-    # Total tokens issued
-    total_tokens = conn.execute('''
-        SELECT SUM(amount) as total_tokens
-        FROM token_transactions
-        WHERE transaction_type = 'award'
-    ''').fetchone()
-    
-    conn.close()
-    
-    return {
-        'top_users': [dict(user) for user in top_users],
-        'recent_transactions': [dict(tx) for tx in recent_transactions],
-        'total_tokens': dict(total_tokens)['total_tokens'] if total_tokens and dict(total_tokens)['total_tokens'] else 0
-    }
-
-# Function to get user statistics
-def get_user_statistics():
-    """Get user statistics"""
-    conn = get_db_connection()
-    
-    # Total users
-    total_users = conn.execute('SELECT COUNT(*) as count FROM users').fetchone()
-    
-    # Active users (logged in within the last 7 days)
-    seven_days_ago = (datetime.now() - timedelta(days=7)).isoformat()
-    active_users = conn.execute(
-        'SELECT COUNT(*) as count FROM users WHERE last_login > ?',
-        (seven_days_ago,)
-    ).fetchone()
-    
-    # New users in the last 30 days
-    thirty_days_ago = (datetime.now() - timedelta(days=30)).isoformat()
-    new_users = conn.execute(
-        'SELECT COUNT(*) as count FROM users WHERE created_at > ?',
-        (thirty_days_ago,)
-    ).fetchone()
-    
-    conn.close()
-    
-    return {
-        'total_users': dict(total_users)['count'] if total_users else 0,
-        'active_users': dict(active_users)['count'] if active_users else 0,
-        'new_users': dict(new_users)['count'] if new_users else 0
-    }
 
 # Routes
 @app.route('/')
@@ -228,18 +157,6 @@ def api_total_stats():
     stats = get_total_statistics()
     return jsonify(stats)
 
-@app.route('/api/stats/tokens')
-def api_token_stats():
-    """API endpoint for token statistics"""
-    stats = get_token_statistics()
-    return jsonify(stats)
-
-@app.route('/api/stats/users')
-def api_user_stats():
-    """API endpoint for user statistics"""
-    stats = get_user_statistics()
-    return jsonify(stats)
-
 @app.route('/events')
 def events_page():
     """Render the events page"""
@@ -249,16 +166,6 @@ def events_page():
 def stats_page():
     """Render the statistics page"""
     return render_template('stats.html')
-
-@app.route('/tokens')
-def tokens_page():
-    """Render the tokens page"""
-    return render_template('tokens.html')
-
-@app.route('/users')
-def users_page():
-    """Render the users page"""
-    return render_template('users.html')
 
 @app.route('/api/export/csv')
 def export_csv():
@@ -293,15 +200,11 @@ def debug_page():
         events = get_recent_events(5)
         daily_stats = get_daily_statistics(7)
         totals = get_total_statistics()
-        token_stats = get_token_statistics()
-        user_stats = get_user_statistics()
         
         debug_data = {
             'events': events,
             'daily_stats': daily_stats,
-            'totals': totals,
-            'token_stats': token_stats,
-            'user_stats': user_stats
+            'totals': totals
         }
         
         return render_template('debug.html', data=debug_data)

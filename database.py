@@ -3,11 +3,9 @@ import sqlite3
 import os
 import uuid
 import json
-import base64
 import cv2
 import numpy as np
 from datetime import datetime
-import hashlib
 
 class SortingDatabase:
     """Database handler for waste sorting system"""
@@ -51,33 +49,6 @@ class SortingDatabase:
         )
         ''')
         
-        # Users table - stores user information
-        self.cursor.execute('''
-        CREATE TABLE IF NOT EXISTS users (
-            id TEXT PRIMARY KEY,
-            username TEXT UNIQUE NOT NULL,
-            email TEXT,
-            token_balance REAL DEFAULT 0,
-            created_at TEXT NOT NULL,
-            last_login TEXT,
-            settings TEXT
-        )
-        ''')
-        
-        # Token transactions table - stores token reward activities
-        self.cursor.execute('''
-        CREATE TABLE IF NOT EXISTS token_transactions (
-            id TEXT PRIMARY KEY,
-            timestamp TEXT NOT NULL,
-            user_id TEXT NOT NULL,
-            amount REAL NOT NULL,
-            transaction_type TEXT NOT NULL,
-            reference_id TEXT,
-            metadata TEXT,
-            FOREIGN KEY (user_id) REFERENCES users(id)
-        )
-        ''')
-        
         # Statistics table - stores aggregated statistics
         self.cursor.execute('''
         CREATE TABLE IF NOT EXISTS statistics (
@@ -86,7 +57,6 @@ class SortingDatabase:
             recycling_count INTEGER DEFAULT 0,
             garbage_count INTEGER DEFAULT 0,
             total_count INTEGER DEFAULT 0,
-            token_rewards REAL DEFAULT 0,
             metadata TEXT
         )
         ''')
@@ -245,138 +215,6 @@ class SortingDatabase:
         
         return None
     
-    # User Methods
-    def add_user(self, username, email=None, settings=None):
-        """Add a new user to the database"""
-        # Check if user already exists
-        self.cursor.execute("SELECT id FROM users WHERE username = ?", (username,))
-        if self.cursor.fetchone():
-            return None, "Username already exists"
-        
-        # Generate user ID
-        user_id = hashlib.sha256(username.encode()).hexdigest()[:16]
-        created_at = datetime.now().isoformat()
-        
-        # Convert settings to JSON string if provided
-        settings_json = None
-        if settings:
-            settings_json = json.dumps(settings)
-        
-        # Insert user
-        self.cursor.execute(
-            "INSERT INTO users (id, username, email, created_at, settings) VALUES (?, ?, ?, ?, ?)",
-            (user_id, username, email, created_at, settings_json)
-        )
-        
-        # Commit changes
-        self.conn.commit()
-        
-        return user_id, "User created successfully"
-    
-    def get_user(self, username=None, user_id=None):
-        """Get user by username or ID"""
-        if username:
-            self.cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
-        elif user_id:
-            self.cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
-        else:
-            return None
-        
-        user = self.cursor.fetchone()
-        
-        if user:
-            # Convert to dictionary
-            columns = [column[0] for column in self.cursor.description]
-            user_dict = dict(zip(columns, user))
-            
-            # Parse settings if they exist
-            if user_dict["settings"]:
-                user_dict["settings"] = json.loads(user_dict["settings"])
-            
-            return user_dict
-        
-        return None
-    
-    def update_user_login(self, username):
-        """Update user's last login time"""
-        last_login = datetime.now().isoformat()
-        
-        self.cursor.execute(
-            "UPDATE users SET last_login = ? WHERE username = ?",
-            (last_login, username)
-        )
-        
-        self.conn.commit()
-    
-    # Token Methods
-    def add_token_transaction(self, user_id, amount, transaction_type, reference_id=None, metadata=None):
-        """Add a token transaction"""
-        transaction_id = str(uuid.uuid4())
-        timestamp = datetime.now().isoformat()
-        
-        # Convert metadata to JSON string if provided
-        metadata_json = None
-        if metadata:
-            metadata_json = json.dumps(metadata)
-        
-        # Insert transaction
-        self.cursor.execute(
-            "INSERT INTO token_transactions (id, timestamp, user_id, amount, transaction_type, reference_id, metadata) "
-            "VALUES (?, ?, ?, ?, ?, ?, ?)",
-            (transaction_id, timestamp, user_id, amount, transaction_type, reference_id, metadata_json)
-        )
-        
-        # Update user balance
-        self.cursor.execute(
-            "UPDATE users SET token_balance = token_balance + ? WHERE id = ?",
-            (amount, user_id)
-        )
-        
-        # Update statistics
-        today = datetime.now().strftime("%Y-%m-%d")
-        self.cursor.execute(
-            "UPDATE statistics SET token_rewards = token_rewards + ? WHERE date = ?",
-            (amount, today)
-        )
-        
-        # Commit changes
-        self.conn.commit()
-        
-        return transaction_id
-    
-    def get_user_transactions(self, user_id, limit=50):
-        """Get user's token transactions"""
-        self.cursor.execute(
-            "SELECT * FROM token_transactions WHERE user_id = ? ORDER BY timestamp DESC LIMIT ?",
-            (user_id, limit)
-        )
-        transactions = self.cursor.fetchall()
-        
-        # Convert to list of dictionaries
-        columns = [column[0] for column in self.cursor.description]
-        transaction_list = []
-        
-        for transaction in transactions:
-            transaction_dict = dict(zip(columns, transaction))
-            
-            # Parse metadata if it exists
-            if transaction_dict["metadata"]:
-                transaction_dict["metadata"] = json.loads(transaction_dict["metadata"])
-            
-            transaction_list.append(transaction_dict)
-        
-        return transaction_list
-    
-    def get_user_balance(self, user_id):
-        """Get user's token balance"""
-        self.cursor.execute("SELECT token_balance FROM users WHERE id = ?", (user_id,))
-        result = self.cursor.fetchone()
-        
-        if result:
-            return result[0]
-        
-        return 0.0
-    
     # Statistics Methods
     def _update_statistics(self, item_type):
         """Update daily statistics based on sort event"""
@@ -442,8 +280,7 @@ class SortingDatabase:
                 SUM(can_count) as total_cans,
                 SUM(recycling_count) as total_recycling,
                 SUM(garbage_count) as total_garbage,
-                SUM(total_count) as grand_total,
-                SUM(token_rewards) as total_rewards
+                SUM(total_count) as grand_total
             FROM statistics
         """)
         
@@ -451,15 +288,14 @@ class SortingDatabase:
         
         if result:
             # Convert to dictionary
-            keys = ["total_cans", "total_recycling", "total_garbage", "grand_total", "total_rewards"]
+            keys = ["total_cans", "total_recycling", "total_garbage", "grand_total"]
             return dict(zip(keys, result))
         
         return {
             "total_cans": 0,
             "total_recycling": 0,
             "total_garbage": 0,
-            "grand_total": 0,
-            "total_rewards": 0
+            "grand_total": 0
         }
     
     # Backup and Restore
@@ -475,24 +311,6 @@ class SortingDatabase:
         
         with open(os.path.join(backup_path, "sort_events.json"), "w") as f:
             json.dump(sort_events_list, f, indent=2)
-        
-        # Backup users (excluding images for size reasons)
-        self.cursor.execute("SELECT id, username, email, token_balance, created_at, last_login, settings FROM users")
-        users = self.cursor.fetchall()
-        columns = [column[0] for column in self.cursor.description]
-        users_list = [dict(zip(columns, user)) for user in users]
-        
-        with open(os.path.join(backup_path, "users.json"), "w") as f:
-            json.dump(users_list, f, indent=2)
-        
-        # Backup token transactions
-        self.cursor.execute("SELECT * FROM token_transactions")
-        transactions = self.cursor.fetchall()
-        columns = [column[0] for column in self.cursor.description]
-        transactions_list = [dict(zip(columns, transaction)) for transaction in transactions]
-        
-        with open(os.path.join(backup_path, "token_transactions.json"), "w") as f:
-            json.dump(transactions_list, f, indent=2)
         
         # Backup statistics
         self.cursor.execute("SELECT * FROM statistics")
@@ -511,22 +329,10 @@ if __name__ == "__main__":
     # Create database
     db = SortingDatabase()
     
-    # Add a user
-    user_id, message = db.add_user("test_user", "test@example.com")
-    print(f"Added user: {message}")
-    
     # Add a sort event
     image = np.zeros((100, 100, 3), dtype=np.uint8)  # Black test image
-    event_id = db.add_sort_event("can", 0.95, "recycling", image, user_id)
+    event_id = db.add_sort_event("can", 0.95, "recycling", image)
     print(f"Added sort event: {event_id}")
-    
-    # Add a token transaction
-    transaction_id = db.add_token_transaction(user_id, 1.0, "reward", event_id)
-    print(f"Added token transaction: {transaction_id}")
-    
-    # Get user balance
-    balance = db.get_user_balance(user_id)
-    print(f"User balance: {balance}")
     
     # Get statistics
     stats = db.get_total_statistics()

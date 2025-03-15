@@ -19,7 +19,6 @@ from datetime import datetime
 
 # Import our modules
 from database import SortingDatabase
-from crypto_rewards import RecycleToken, RecycleTokenUI
 from train_model import WasteClassifierTrainer
 
 # Configure logging
@@ -67,9 +66,6 @@ class WasteSorterApp:
         
         # Database
         self.db = SortingDatabase()
-        
-        # Token system
-        self.token_system = RecycleToken(self.db)
         
         # Flag for auto-sorting
         self.auto_sort_active = False
@@ -256,14 +252,6 @@ class WasteSorterApp:
         ttk.Button(preset_frame, text="Garbage", 
                  command=lambda: self.set_platform_position(135)).pack(side=tk.LEFT, padx=2)
         
-        # Add token rewards button
-        token_frame = ttk.Frame(control_frame)
-        token_frame.pack(fill=tk.X, pady=10)
-        
-        token_btn = ttk.Button(token_frame, text="Token Rewards", 
-                             command=self.show_token_ui)
-        token_btn.pack(fill=tk.X)
-        
         # Status bar
         self.status_var = tk.StringVar(value="System ready. Please connect to Arduino.")
         status_bar = ttk.Label(self.root, textvariable=self.status_var, relief=tk.SUNKEN, anchor=tk.W)
@@ -364,9 +352,6 @@ class WasteSorterApp:
             logger.error(error_msg)
             self.status_var.set(error_msg)
             messagebox.showerror("Model Error", error_msg)
-        
-        # Initialize token system UI
-        self.token_ui = RecycleTokenUI(self.root, self.token_system, self)
     
     def toggle_connection(self):
         """Connect or disconnect from Arduino"""
@@ -794,15 +779,9 @@ class WasteSorterApp:
                     self.confidence,
                     "recycling" if classification != "Garbage" else "garbage",
                     self.current_frame,
-                    None,  # user_id - could add when token system integrated
+                    None,  # user_id
                     metadata
                 )
-                
-                # Award tokens for cans
-                if classification == "Can" and self.token_ui:
-                    message = self.token_ui.award_tokens_for_cans(1)
-                    if message:
-                        self.status_var.set(message)
             
             # Update UI
             self.update_counter_display()
@@ -859,15 +838,9 @@ class WasteSorterApp:
                     1.0,
                     "recycling" if classification != "Garbage" else "garbage",
                     self.current_frame,
-                    None,  # user_id - could add when token system integrated
+                    None,  # user_id
                     metadata
                 )
-                
-                # Award tokens for cans
-                if sort_type == 'C' and self.token_ui:
-                    message = self.token_ui.award_tokens_for_cans(1)
-                    if message:
-                        self.status_var.set(message)
             
             # Update UI
             self.update_counter_display()
@@ -1015,10 +988,6 @@ class WasteSorterApp:
         
         except Exception as e:
             logger.error(f"Logging error: {str(e)}")
-    
-    def show_token_ui(self):
-        """Show the token rewards UI"""
-        self.token_ui.show_window()
     
     def open_training_dialog(self):
         """Open the model training dialog"""
@@ -1542,12 +1511,7 @@ class WasteSorterApp:
            - Use platform calibration to adjust angles
            - Reset to neutral returns platform to level position
         
-        4. Token Rewards:
-           - Click Token Rewards to open the rewards system
-           - Create an account to track recycling rewards
-           - Earn tokens for recycling cans
-        
-        5. Analytics:
+        4. Analytics:
            - Go to Tools > Start Analytics Dashboard
            - View sorting statistics and history
            - Access at http://localhost:5000
@@ -1592,7 +1556,6 @@ class WasteSorterApp:
         Features:
         - Computer vision classification
         - Arduino-controlled sorting platform
-        - Token rewards for recycling
         - Analytics dashboard
         
         Created: March 2025

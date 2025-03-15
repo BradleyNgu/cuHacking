@@ -1,12 +1,11 @@
 # Waste Sorting System
 
-A comprehensive automated waste sorting system that uses computer vision, machine learning, and robotics to sort waste items into recycling and garbage. The system includes a crypto-based rewards program for recycling cans, a web analytics dashboard, and a database for tracking sorting history.
+A comprehensive automated waste sorting system that uses computer vision, machine learning, and a servo mechanism to sort waste items into recycling and garbage. The system includes a web analytics dashboard and a database for tracking sorting history.
 
 ## Features
 
 - **Computer Vision Classification**: Automatically identifies cans, recyclables, and garbage
-- **Automatic Sorting**: Mechanically sorts items into appropriate bins
-- **Token Rewards**: Earn crypto tokens for recycling cans (valued at $0.05 per can)
+- **Automatic Sorting**: Mechanically sorts items into appropriate bins using a servo-controlled platform
 - **Analytics Dashboard**: Web interface to view statistics and sorting history
 - **Custom Model Training**: Train your own classification model for better accuracy
 - **Data Tracking**: Store images and sorting data for analysis
@@ -53,7 +52,6 @@ waste-sorting-system/
 │   └── garbage/
 ├── app.py                    # Web dashboard Flask app
 ├── database.py               # Database module
-├── crypto_rewards.py         # Token reward system
 ├── main.py                   # Main application
 └── train_model.py            # Model training script
 ```
@@ -76,7 +74,7 @@ pip install -r requirements.txt
 Or manually install the following packages:
 
 ```bash
-pip install tensorflow opencv-python numpy pillow pyserial flask matplotlib qrcode
+pip install tensorflow opencv-python numpy pillow pyserial flask matplotlib
 ```
 
 ### 3. Set Up Arduino
@@ -196,19 +194,6 @@ Access the dashboard at http://localhost:5000
 
 3. Restart the application to use the new model
 
-## Token Rewards System
-
-1. Open the Token Rewards window:
-   - Click "Token Rewards" button in the main application
-
-2. Create an account:
-   - Enter a username and email
-   - Click "Register"
-
-3. Earn tokens:
-   - Recycle cans to earn tokens (0.05 USD value per can)
-   - Enable "Automatically reward tokens for cans" for automatic crediting
-
 ## Troubleshooting
 
 ### Arduino Connection Issues
@@ -236,10 +221,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- TensorFlow team for the machine learning framework
-- OpenCV community for the computer vision library
-- Flask team for the web framework
-- Arduino community for the hardware platform

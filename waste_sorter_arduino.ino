@@ -3,8 +3,6 @@
 
 // Define pins
 const int PLATFORM_SERVO_PIN = 9;     // Controls the tilting platform
-const int RECYCLING_LED_PIN = 3;      // LED indicator for recycling
-const int GARBAGE_LED_PIN = 4;        // LED indicator for garbage
 
 // Create servo object
 Servo platformServo;                  // Controls the tilting platform
@@ -32,14 +30,6 @@ void setup() {
   
   // Initialize servo position - move smoothly to avoid jerking
   moveServoSmooth(platformServo.read(), PLATFORM_NEUTRAL);
-  
-  // Set up LED pins
-  pinMode(RECYCLING_LED_PIN, OUTPUT);
-  pinMode(GARBAGE_LED_PIN, OUTPUT);
-  
-  // Turn off LEDs
-  digitalWrite(RECYCLING_LED_PIN, LOW);
-  digitalWrite(GARBAGE_LED_PIN, LOW);
   
   // Wait for everything to initialize
   delay(1000);
@@ -145,21 +135,11 @@ void sortItem(bool isRecycling) {
   if (isRecycling) {
     // Tilt platform toward recycling bin
     moveServoSmooth(platformServo.read(), PLATFORM_RECYCLING);
-    
-    // Visual indicator
-    digitalWrite(RECYCLING_LED_PIN, HIGH);
-    digitalWrite(GARBAGE_LED_PIN, LOW);
-    
     Serial.println("STATUS:Platform tilted to recycling position");
   } 
   else {
     // Tilt platform toward garbage bin
     moveServoSmooth(platformServo.read(), PLATFORM_GARBAGE);
-    
-    // Visual indicator
-    digitalWrite(RECYCLING_LED_PIN, LOW);
-    digitalWrite(GARBAGE_LED_PIN, HIGH);
-    
     Serial.println("STATUS:Platform tilted to garbage position");
   }
   
@@ -169,24 +149,16 @@ void sortItem(bool isRecycling) {
   // 5. Return to neutral position
   moveServoSmooth(platformServo.read(), PLATFORM_NEUTRAL);
   
-  // 6. Reset LEDs
-  digitalWrite(RECYCLING_LED_PIN, LOW);
-  digitalWrite(GARBAGE_LED_PIN, LOW);
-  
-  // 7. Reset state variables
+  // 6. Reset state variables
   isSorting = false;
   
-  // 8. Send completion notification
+  // 7. Send completion notification
   Serial.println("EVENT:SORT_COMPLETE");
 }
 
 void resetSystem() {
   // Reset servo to neutral position
   moveServoSmooth(platformServo.read(), PLATFORM_NEUTRAL);
-  
-  // Turn off LEDs
-  digitalWrite(RECYCLING_LED_PIN, LOW);
-  digitalWrite(GARBAGE_LED_PIN, LOW);
   
   // Reset state variables
   isSorting = false;
@@ -224,37 +196,23 @@ void testSequence() {
   
   // 2. Move to recycling position
   moveServoSmooth(platformServo.read(), PLATFORM_RECYCLING);
-  digitalWrite(RECYCLING_LED_PIN, HIGH);
   Serial.println("STATUS:Test - Recycling position");
   delay(2000);
   
   // 3. Back to neutral
   moveServoSmooth(platformServo.read(), PLATFORM_NEUTRAL);
-  digitalWrite(RECYCLING_LED_PIN, LOW);
   Serial.println("STATUS:Test - Back to neutral");
   delay(1000);
   
   // 4. Move to garbage position
   moveServoSmooth(platformServo.read(), PLATFORM_GARBAGE);
-  digitalWrite(GARBAGE_LED_PIN, HIGH);
   Serial.println("STATUS:Test - Garbage position");
   delay(2000);
   
   // 5. Back to neutral
   moveServoSmooth(platformServo.read(), PLATFORM_NEUTRAL);
-  digitalWrite(GARBAGE_LED_PIN, LOW);
   Serial.println("STATUS:Test - Back to neutral");
   delay(1000);
-  
-  // 6. Blink LEDs
-  for (int i = 0; i < 3; i++) {
-    digitalWrite(RECYCLING_LED_PIN, HIGH);
-    digitalWrite(GARBAGE_LED_PIN, HIGH);
-    delay(200);
-    digitalWrite(RECYCLING_LED_PIN, LOW);
-    digitalWrite(GARBAGE_LED_PIN, LOW);
-    delay(200);
-  }
   
   Serial.println("STATUS:Test sequence complete");
 }
