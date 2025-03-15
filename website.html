@@ -1,0 +1,2127 @@
+<!-- templates/layout.html - Base template for all pages -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Waste Sorting Analytics{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-recycle me-2"></i>
+                Waste Sorting Analytics
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/events">Sorting Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stats">Statistics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tokens">Token Rewards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users">Users</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container py-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-light py-3 mt-auto">
+        <div class="container text-center">
+            <span class="text-muted">
+                Waste Sorting Analytics Dashboard &copy; 2025
+            </span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>
+
+<!-- templates/index.html - Dashboard homepage -->
+{% extends "layout.html" %}
+
+{% block title %}Dashboard | Waste Sorting Analytics{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="display-5 mb-4">
+            <i class="fas fa-tachometer-alt me-2"></i>
+            Dashboard Overview
+        </h1>
+    </div>
+</div>
+
+<!-- Summary Cards -->
+<div class="row mb-4">
+    <!-- Total Sorted Items -->
+    <div class="col-md-3 mb-4">
+        <div class="card border-primary h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-primary">
+                    <i class="fas fa-sort me-2"></i>
+                    Total Sorted
+                </h5>
+                <p class="display-4 mb-0" id="total-sorted">-</p>
+                <p class="text-muted small">All-time total items sorted</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recycling Rate -->
+    <div class="col-md-3 mb-4">
+        <div class="card border-success h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-success">
+                    <i class="fas fa-leaf me-2"></i>
+                    Recycling Rate
+                </h5>
+                <p class="display-4 mb-0" id="recycling-rate">-</p>
+                <p class="text-muted small">Percentage of items recycled</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cans Collected -->
+    <div class="col-md-3 mb-4">
+        <div class="card border-info h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-info">
+                    <i class="fas fa-wine-bottle me-2"></i>
+                    Cans Collected
+                </h5>
+                <p class="display-4 mb-0" id="cans-collected">-</p>
+                <p class="text-muted small">Total cans collected</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Token Rewards -->
+    <div class="col-md-3 mb-4">
+        <div class="card border-warning h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-warning">
+                    <i class="fas fa-coins me-2"></i>
+                    Token Rewards
+                </h5>
+                <p class="display-4 mb-0" id="token-rewards">-</p>
+                <p class="text-muted small">Total tokens issued</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts -->
+<div class="row mb-4">
+    <!-- Daily Sorting Activity -->
+    <div class="col-lg-8 mb-4">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Daily Sorting Activity</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="daily-chart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Distribution by Type -->
+    <div class="col-lg-4 mb-4">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Distribution by Type</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="type-distribution-chart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Activity and User Stats -->
+<div class="row mb-4">
+    <!-- Recent Sorting Events -->
+    <div class="col-lg-8 mb-4">
+        <div class="card">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">Recent Sorting Events</h5>
+                <a href="/events" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Time</th>
+                                <th>Item Type</th>
+                                <th>Confidence</th>
+                                <th>Destination</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-events">
+                            <tr>
+                                <td colspan="4" class="text-center">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- User Stats -->
+    <div class="col-lg-4 mb-4">
+        <div class="card">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">User Statistics</h5>
+                <a href="/users" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between mb-3">
+                    <div class="text-center">
+                        <h3 id="total-users">-</h3>
+                        <p class="text-muted small mb-0">Total Users</p>
+                    </div>
+                    <div class="text-center">
+                        <h3 id="active-users">-</h3>
+                        <p class="text-muted small mb-0">Active Users</p>
+                    </div>
+                    <div class="text-center">
+                        <h3 id="new-users">-</h3>
+                        <p class="text-muted small mb-0">New (30d)</p>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <h6 class="mb-3">Top Token Holders</h6>
+                <ul class="list-group list-group-flush" id="top-users">
+                    <li class="list-group-item text-center">Loading...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Fetch data when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchDashboardData();
+    });
+    
+    // Main function to fetch all dashboard data
+    function fetchDashboardData() {
+        // Fetch total statistics
+        fetch('/api/stats/totals')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('total-sorted').textContent = data.grand_total || 0;
+                document.getElementById('cans-collected').textContent = data.total_cans || 0;
+                
+                // Calculate recycling rate
+                const totalRecycling = (data.total_cans || 0) + (data.total_recycling || 0);
+                const totalItems = (data.grand_total || 0);
+                const recyclingRate = totalItems > 0 ? (totalRecycling / totalItems * 100).toFixed(1) : 0;
+                document.getElementById('recycling-rate').textContent = recyclingRate + '%';
+                
+                // Update distribution chart
+                updateDistributionChart(data);
+            })
+            .catch(error => console.error('Error fetching total stats:', error));
+        
+        // Fetch token statistics
+        fetch('/api/stats/tokens')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('token-rewards').textContent = data.total_tokens || 0;
+                
+                // Update top users
+                updateTopUsers(data.top_users || []);
+            })
+            .catch(error => console.error('Error fetching token stats:', error));
+        
+        // Fetch user statistics
+        fetch('/api/stats/users')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('total-users').textContent = data.total_users || 0;
+                document.getElementById('active-users').textContent = data.active_users || 0;
+                document.getElementById('new-users').textContent = data.new_users || 0;
+            })
+            .catch(error => console.error('Error fetching user stats:', error));
+        
+        // Fetch daily statistics for chart
+        fetch('/api/stats/daily?days=30')
+            .then(response => response.json())
+            .then(data => {
+                updateDailyChart(data);
+            })
+            .catch(error => console.error('Error fetching daily stats:', error));
+        
+        // Fetch recent events
+        fetch('/api/events/recent?limit=5')
+            .then(response => response.json())
+            .then(data => {
+                updateRecentEvents(data);
+            })
+            .catch(error => console.error('Error fetching recent events:', error));
+    }
+    
+    // Update distribution chart
+    function updateDistributionChart(data) {
+        const ctx = document.getElementById('type-distribution-chart').getContext('2d');
+        
+        // Data for the chart
+        const chartData = {
+            labels: ['Cans', 'Recycling', 'Garbage'],
+            datasets: [{
+                data: [
+                    data.total_cans || 0,
+                    data.total_recycling || 0,
+                    data.total_garbage || 0
+                ],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.7)', // Blue for cans
+                    'rgba(75, 192, 192, 0.7)', // Teal for recycling
+                    'rgba(255, 99, 132, 0.7)'  // Red for garbage
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+        
+        // Create the chart
+        new Chart(ctx, {
+            type: 'pie',
+            data: chartData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    }
+    
+    // Update daily chart
+    function updateDailyChart(data) {
+        const ctx = document.getElementById('daily-chart').getContext('2d');
+        
+        // Prepare data for the chart
+        const dates = data.map(item => item.date);
+        const canData = data.map(item => item.can_count || 0);
+        const recyclingData = data.map(item => item.recycling_count || 0);
+        const garbageData = data.map(item => item.garbage_count || 0);
+        
+        // Create the chart
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dates,
+                datasets: [
+                    {
+                        label: 'Cans',
+                        data: canData,
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Recycling',
+                        data: recyclingData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Garbage',
+                        data: garbageData,
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    }
+    
+    // Update recent events table
+    function updateRecentEvents(events) {
+        const tableBody = document.getElementById('recent-events');
+        tableBody.innerHTML = '';
+        
+        if (events.length === 0) {
+            const row = document.createElement('tr');
+            row.innerHTML = '<td colspan="4" class="text-center">No events yet</td>';
+            tableBody.appendChild(row);
+            return;
+        }
+        
+        events.forEach(event => {
+            const row = document.createElement('tr');
+            
+            // Format the timestamp
+            const time = event.formatted_time || event.timestamp;
+            
+            // Create confidence badge
+            let confidenceBadge = '';
+            const confidence = parseFloat(event.confidence);
+            if (confidence >= 0.9) {
+                confidenceBadge = '<span class="badge bg-success">High</span>';
+            } else if (confidence >= 0.7) {
+                confidenceBadge = '<span class="badge bg-warning text-dark">Medium</span>';
+            } else {
+                confidenceBadge = '<span class="badge bg-danger">Low</span>';
+            }
+            
+            // Create destination badge
+            let destinationBadge = '';
+            if (event.sort_destination === 'recycling') {
+                destinationBadge = '<span class="badge bg-info">Recycling</span>';
+            } else {
+                destinationBadge = '<span class="badge bg-secondary">Garbage</span>';
+            }
+            
+            // Build row HTML
+            row.innerHTML = `
+                <td>${time}</td>
+                <td>${event.item_type}</td>
+                <td>${confidenceBadge} ${(confidence * 100).toFixed(1)}%</td>
+                <td>${destinationBadge}</td>
+            `;
+            
+            tableBody.appendChild(row);
+        });
+    }
+    
+    // Update top users list
+    function updateTopUsers(users) {
+        const usersList = document.getElementById('top-users');
+        usersList.innerHTML = '';
+        
+        if (users.length === 0) {
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item text-center';
+            listItem.textContent = 'No users yet';
+            usersList.appendChild(listItem);
+            return;
+        }
+        
+        // Display top 5 users
+        users.slice(0, 5).forEach(user => {
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+            
+            listItem.innerHTML = `
+                <span>${user.username}</span>
+                <span class="badge bg-warning rounded-pill">${user.token_balance}</span>
+            `;
+            
+            usersList.appendChild(listItem);
+        });
+    }
+</script>
+{% endblock %}
+
+<!-- templates/events.html - Sorting events page -->
+{% extends "layout.html" %}
+
+{% block title %}Sorting Events | Waste Sorting Analytics{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="display-5 mb-4">
+            <i class="fas fa-list-ul me-2"></i>
+            Sorting Events
+        </h1>
+    </div>
+</div>
+
+<!-- Filters -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form id="filter-form" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="item-type" class="form-label">Item Type</label>
+                        <select id="item-type" class="form-select">
+                            <option value="">All Types</option>
+                            <option value="can">Can</option>
+                            <option value="recycling">Recycling</option>
+                            <option value="garbage">Garbage</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="destination" class="form-label">Destination</label>
+                        <select id="destination" class="form-select">
+                            <option value="">All Destinations</option>
+                            <option value="recycling">Recycling</option>
+                            <option value="garbage">Garbage</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="limit" class="form-label">Limit Results</label>
+                        <select id="limit" class="form-select">
+                            <option value="20">20 Events</option>
+                            <option value="50" selected>50 Events</option>
+                            <option value="100">100 Events</option>
+                            <option value="200">200 Events</option>
+                        </select>
+                    </div>
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-primary">Apply Filters</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Events Table -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="events-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Thumbnail</th>
+                                <th>Time</th>
+                                <th>Item Type</th>
+                                <th>Confidence</th>
+                                <th>Destination</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="events-list">
+                            <tr>
+                                <td colspan="6" class="text-center py-4">Loading events...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Event Detail Modal -->
+<div class="modal fade" id="event-detail-modal" tabindex="-1" aria-labelledby="event-detail-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="event-detail-modal-label">Event Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img id="event-image" src="" alt="Item Image" class="img-fluid rounded mb-3">
+                    </div>
+                    <div class="col-md-6">
+                        <h5 id="event-type">Item Type</h5>
+                        <div class="mb-3">
+                            <span class="badge bg-primary" id="event-confidence">Confidence: 0%</span>
+                            <span class="badge bg-secondary" id="event-destination">Destination: Unknown</span>
+                        </div>
+                        <p class="text-muted" id="event-timestamp">Timestamp: -</p>
+                        <hr>
+                        <h6>Metadata</h6>
+                        <pre id="event-metadata" class="bg-light p-3 rounded small">No metadata available</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Fetch data when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchEvents();
+        
+        // Set up form submission event
+        document.getElementById('filter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            fetchEvents();
+        });
+    });
+    
+    // Fetch events with filters
+    function fetchEvents() {
+        // Get filter values
+        const itemType = document.getElementById('item-type').value;
+        const destination = document.getElementById('destination').value;
+        const limit = document.getElementById('limit').value;
+        
+        // Build query string
+        let queryParams = `limit=${limit}`;
+        
+        // Note: Backend implementation for filtering by type and destination
+        // would need to be added to fully implement these filters
+        
+        // Show loading state
+        document.getElementById('events-list').innerHTML = `
+            <tr>
+                <td colspan="6" class="text-center py-4">Loading events...</td>
+            </tr>
+        `;
+        
+        // Fetch filtered events
+        fetch(`/api/events/recent?${queryParams}`)
+            .then(response => response.json())
+            .then(data => {
+                updateEventsTable(data, itemType, destination);
+            })
+            .catch(error => {
+                console.error('Error fetching events:', error);
+                document.getElementById('events-list').innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center py-4">Error loading events. Please try again.</td>
+                    </tr>
+                `;
+            });
+    }
+    
+    // Update events table with data
+    function updateEventsTable(events, itemTypeFilter, destinationFilter) {
+        const tableBody = document.getElementById('events-list');
+        tableBody.innerHTML = '';
+        
+        // Apply client-side filtering
+        let filteredEvents = events;
+        
+        if (itemTypeFilter) {
+            filteredEvents = filteredEvents.filter(event => 
+                event.item_type.toLowerCase() === itemTypeFilter.toLowerCase()
+            );
+        }
+        
+        if (destinationFilter) {
+            filteredEvents = filteredEvents.filter(event => 
+                event.sort_destination.toLowerCase() === destinationFilter.toLowerCase()
+            );
+        }
+        
+        // Check if we have any events after filtering
+        if (filteredEvents.length === 0) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="6" class="text-center py-4">No events match your filter criteria</td>
+                </tr>
+            `;
+            return;
+        }
+        
+        // Populate table with events
+        filteredEvents.forEach(event => {
+            const row = document.createElement('tr');
+            
+            // Format the timestamp
+            const time = event.formatted_time || event.timestamp;
+            
+            // Create confidence badge
+            let confidenceBadge = '';
+            const confidence = parseFloat(event.confidence);
+            if (confidence >= 0.9) {
+                confidenceBadge = '<span class="badge bg-success">High</span>';
+            } else if (confidence >= 0.7) {
+                confidenceBadge = '<span class="badge bg-warning text-dark">Medium</span>';
+            } else {
+                confidenceBadge = '<span class="badge bg-danger">Low</span>';
+            }
+            
+            // Create destination badge
+            let destinationBadge = '';
+            if (event.sort_destination === 'recycling') {
+                destinationBadge = '<span class="badge bg-info">Recycling</span>';
+            } else {
+                destinationBadge = '<span class="badge bg-secondary">Garbage</span>';
+            }
+            
+            // Create thumbnail
+            let thumbnailHtml = '';
+            if (event.image_id) {
+                thumbnailHtml = `<img src="/api/thumbnail/${event.image_id}" alt="Thumbnail" class="img-thumbnail" style="width: 50px; height: 50px; object-fit: cover;">`;
+            } else {
+                thumbnailHtml = '<div class="bg-light text-center" style="width: 50px; height: 50px;"><i class="fas fa-image text-muted pt-3"></i></div>';
+            }
+            
+            // Build row HTML
+            row.innerHTML = `
+                <td>${thumbnailHtml}</td>
+                <td>${time}</td>
+                <td>${event.item_type}</td>
+                <td>${confidenceBadge} ${(confidence * 100).toFixed(1)}%</td>
+                <td>${destinationBadge}</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary view-event" data-event-id="${event.id}">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                </td>
+            `;
+            
+            tableBody.appendChild(row);
+        });
+        
+        // Add event listeners to view buttons
+        document.querySelectorAll('.view-event').forEach(button => {
+            button.addEventListener('click', function() {
+                const eventId = this.getAttribute('data-event-id');
+                viewEventDetails(eventId);
+            });
+        });
+    }
+    
+    // View event details
+    function viewEventDetails(eventId) {
+        // Fetch event details
+        fetch(`/api/events/${eventId}`)
+            .then(response => response.json())
+            .then(event => {
+                // Update modal content
+                document.getElementById('event-type').textContent = `Item Type: ${event.item_type}`;
+                document.getElementById('event-confidence').textContent = `Confidence: ${(parseFloat(event.confidence) * 100).toFixed(1)}%`;
+                document.getElementById('event-destination').textContent = `Destination: ${event.sort_destination}`;
+                document.getElementById('event-timestamp').textContent = `Timestamp: ${event.timestamp}`;
+                
+                // Set image
+                if (event.image_id) {
+                    document.getElementById('event-image').src = `/api/thumbnail/${event.image_id}`;
+                    document.getElementById('event-image').style.display = 'block';
+                } else {
+                    document.getElementById('event-image').style.display = 'none';
+                }
+                
+                // Set metadata
+                if (event.metadata) {
+                    let metadata = event.metadata;
+                    if (typeof metadata === 'string') {
+                        try {
+                            metadata = JSON.parse(metadata);
+                        } catch (e) {
+                            // Keep as string if parsing fails
+                        }
+                    }
+                    document.getElementById('event-metadata').textContent = JSON.stringify(metadata, null, 2);
+                } else {
+                    document.getElementById('event-metadata').textContent = 'No metadata available';
+                }
+                
+                // Show modal
+                const modal = new bootstrap.Modal(document.getElementById('event-detail-modal'));
+                modal.show();
+            })
+            .catch(error => {
+                console.error('Error fetching event details:', error);
+                alert('Error loading event details. Please try again.');
+            });
+    }
+</script>
+{% endblock %}
+
+<!-- templates/stats.html - Statistics page -->
+{% extends "layout.html" %}
+
+{% block title %}Statistics | Waste Sorting Analytics{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="display-5 mb-4">
+            <i class="fas fa-chart-bar me-2"></i>
+            Sorting Statistics
+        </h1>
+    </div>
+</div>
+
+<!-- Summary Cards -->
+<div class="row mb-4">
+    <!-- Total Sorted Items -->
+    <div class="col-md-3 mb-4">
+        <div class="card border-primary h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-primary">
+                    <i class="fas fa-sort me-2"></i>
+                    Total Sorted
+                </h5>
+                <p class="display-4 mb-0" id="total-sorted">-</p>
+                <p class="text-muted small">All-time total items sorted</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cans -->
+    <div class="col-md-3 mb-4">
+        <div class="card border-info h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-info">
+                    <i class="fas fa-wine-bottle me-2"></i>
+                    Cans
+                </h5>
+                <p class="display-4 mb-0" id="total-cans">-</p>
+                <p class="text-muted small">Total cans collected</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recycling -->
+    <div class="col-md-3 mb-4">
+        <div class="card border-success h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-success">
+                    <i class="fas fa-recycle me-2"></i>
+                    Recycling
+                </h5>
+                <p class="display-4 mb-0" id="total-recycling">-</p>
+                <p class="text-muted small">Total recycling items</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Garbage -->
+    <div class="col-md-3 mb-4">
+        <div class="card border-secondary h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-secondary">
+                    <i class="fas fa-trash me-2"></i>
+                    Garbage
+                </h5>
+                <p class="display-4 mb-0" id="total-garbage">-</p>
+                <p class="text-muted small">Total garbage items</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Time Period Selection -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="time-period" class="col-form-label">Time Period:</label>
+                    </div>
+                    <div class="col-auto">
+                        <select id="time-period" class="form-select">
+                            <option value="7">Last 7 Days</option>
+                            <option value="30" selected>Last 30 Days</option>
+                            <option value="90">Last 90 Days</option>
+                            <option value="365">Last Year</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <button id="update-charts" class="btn btn-primary">Update Charts</button>
+                    </div>
+                    <div class="col-auto ms-auto">
+                        <a href="/api/export/csv" class="btn btn-outline-secondary">
+                            <i class="fas fa-download me-1"></i> Export CSV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts -->
+<div class="row mb-4">
+    <!-- Daily Activity Chart -->
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Daily Sorting Activity</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="daily-activity-chart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Distribution Charts -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Item Type Distribution</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="type-distribution-chart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Recycling vs. Garbage</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="destination-chart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Daily Statistics Table -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Daily Statistics</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Date</th>
+                                <th>Cans</th>
+                                <th>Recycling</th>
+                                <th>Garbage</th>
+                                <th>Total</th>
+                                <th>Token Rewards</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stats-table-body">
+                            <tr>
+                                <td colspan="6" class="text-center py-4">Loading statistics...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Chart objects
+    let dailyChart = null;
+    let typeChart = null;
+    let destinationChart = null;
+    
+    // Fetch data when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchTotalStats();
+        fetchDailyStats(30); // Default to 30 days
+        
+        // Set up update button
+        document.getElementById('update-charts').addEventListener('click', function() {
+            const days = document.getElementById('time-period').value;
+            fetchDailyStats(days);
+        });
+    });
+    
+    // Fetch total statistics
+    function fetchTotalStats() {
+        fetch('/api/stats/totals')
+            .then(response => response.json())
+            .then(data => {
+                // Update summary cards
+                document.getElementById('total-sorted').textContent = data.grand_total || 0;
+                document.getElementById('total-cans').textContent = data.total_cans || 0;
+                document.getElementById('total-recycling').textContent = data.total_recycling || 0;
+                document.getElementById('total-garbage').textContent = data.total_garbage || 0;
+            })
+            .catch(error => console.error('Error fetching total stats:', error));
+    }
+    
+    // Fetch daily statistics
+    function fetchDailyStats(days) {
+        fetch(`/api/stats/daily?days=${days}`)
+            .then(response => response.json())
+            .then(data => {
+                // Update charts
+                updateDailyChart(data);
+                updateDistributionCharts(data);
+                
+                // Update table
+                updateStatsTable(data);
+            })
+            .catch(error => console.error('Error fetching daily stats:', error));
+    }
+    
+    // Update daily activity chart
+    function updateDailyChart(data) {
+        const ctx = document.getElementById('daily-activity-chart').getContext('2d');
+        
+        // Prepare data for the chart
+        const dates = data.map(item => item.date);
+        const canData = data.map(item => item.can_count || 0);
+        const recyclingData = data.map(item => item.recycling_count || 0);
+        const garbageData = data.map(item => item.garbage_count || 0);
+        
+        // Destroy previous chart if it exists
+        if (dailyChart) {
+            dailyChart.destroy();
+        }
+        
+        // Create the chart
+        dailyChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dates,
+                datasets: [
+                    {
+                        label: 'Cans',
+                        data: canData,
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Recycling',
+                        data: recyclingData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Garbage',
+                        data: garbageData,
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    }
+    
+    // Update distribution charts
+    function updateDistributionCharts(data) {
+        // Calculate totals
+        let totalCans = 0;
+        let totalRecycling = 0;
+        let totalGarbage = 0;
+        
+        data.forEach(item => {
+            totalCans += item.can_count || 0;
+            totalRecycling += item.recycling_count || 0;
+            totalGarbage += item.garbage_count || 0;
+        });
+        
+        // Type distribution chart
+        const typeCtx = document.getElementById('type-distribution-chart').getContext('2d');
+        
+        // Destroy previous chart if it exists
+        if (typeChart) {
+            typeChart.destroy();
+        }
+        
+        // Create the chart
+        typeChart = new Chart(typeCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Cans', 'Recycling', 'Garbage'],
+                datasets: [{
+                    data: [totalCans, totalRecycling, totalGarbage],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.7)', // Blue for cans
+                        'rgba(75, 192, 192, 0.7)', // Teal for recycling
+                        'rgba(255, 99, 132, 0.7)'  // Red for garbage
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+        
+        // Destination chart (recycling vs. garbage)
+        const destCtx = document.getElementById('destination-chart').getContext('2d');
+        
+        // Calculate recycling vs. garbage
+        const totalRecyclable = totalCans + totalRecycling;
+        const totalDestination = totalRecyclable + totalGarbage;
+        
+        // Percentages
+        const recyclingPercent = totalDestination > 0 ? (totalRecyclable / totalDestination * 100).toFixed(1) : 0;
+        const garbagePercent = totalDestination > 0 ? (totalGarbage / totalDestination * 100).toFixed(1) : 0;
+        
+        // Destroy previous chart if it exists
+        if (destinationChart) {
+            destinationChart.destroy();
+        }
+        
+        // Create the chart
+        destinationChart = new Chart(destCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [`Recycling (${recyclingPercent}%)`, `Garbage (${garbagePercent}%)`],
+                datasets: [{
+                    data: [totalRecyclable, totalGarbage],
+                    backgroundColor: [
+                        'rgba(40, 167, 69, 0.7)', // Green for recycling
+                        'rgba(108, 117, 125, 0.7)'  // Gray for garbage
+                    ],
+                    borderColor: [
+                        'rgba(40, 167, 69, 1)',
+                        'rgba(108, 117, 125, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    }
+    
+    // Update statistics table
+    function updateStatsTable(data) {
+        const tableBody = document.getElementById('stats-table-body');
+        tableBody.innerHTML = '';
+        
+        if (data.length === 0) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="6" class="text-center py-4">No statistics available</td>
+                </tr>
+            `;
+            return;
+        }
+        
+        // Populate table with data (reversed to show newest first)
+        data.slice().reverse().forEach(item => {
+            const row = document.createElement('tr');
+            
+            // Build row HTML
+            row.innerHTML = `
+                <td>${item.date}</td>
+                <td>${item.can_count || 0}</td>
+                <td>${item.recycling_count || 0}</td>
+                <td>${item.garbage_count || 0}</td>
+                <td>${item.total_count || 0}</td>
+                <td>${item.token_rewards || 0}</td>
+            `;
+            
+            tableBody.appendChild(row);
+        });
+    }
+</script>
+{% endblock %}
+
+<!-- templates/tokens.html - Token rewards page -->
+{% extends "layout.html" %}
+
+{% block title %}Token Rewards | Waste Sorting Analytics{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="display-5 mb-4">
+            <i class="fas fa-coins me-2"></i>
+            Token Rewards
+        </h1>
+    </div>
+</div>
+
+<!-- Token Summary -->
+<div class="row mb-4">
+    <!-- Total Tokens -->
+    <div class="col-md-4 mb-4">
+        <div class="card border-warning h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-warning">
+                    <i class="fas fa-coins me-2"></i>
+                    Total Tokens
+                </h5>
+                <p class="display-4 mb-0" id="total-tokens">-</p>
+                <p class="text-muted small">All-time total tokens issued</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Token Value -->
+    <div class="col-md-4 mb-4">
+        <div class="card border-info h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-info">
+                    <i class="fas fa-dollar-sign me-2"></i>
+                    Token Value
+                </h5>
+                <p class="display-4 mb-0">$0.05</p>
+                <p class="text-muted small">USD value per token</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Total USD Value -->
+    <div class="col-md-4 mb-4">
+        <div class="card border-success h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-success">
+                    <i class="fas fa-money-bill-wave me-2"></i>
+                    Total Value
+                </h5>
+                <p class="display-4 mb-0" id="total-usd-value">$0.00</p>
+                <p class="text-muted small">Total USD value of all tokens</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts and Top Users -->
+<div class="row mb-4">
+    <!-- Token Issuance Chart -->
+    <div class="col-lg-8 mb-4">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Token Issuance Over Time</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="token-chart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Top Token Holders -->
+    <div class="col-lg-4 mb-4">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Top Token Holders</h5>
+            </div>
+            <div class="card-body p-0">
+                <ul class="list-group list-group-flush" id="top-users-list">
+                    <li class="list-group-item text-center py-3">Loading...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Transactions -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Recent Token Transactions</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Time</th>
+                                <th>User</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactions-table">
+                            <tr>
+                                <td colspan="4" class="text-center py-4">Loading transactions...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Fetch data when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchTokenStats();
+        fetchDailyStats(30); // For token chart
+    });
+    
+    // Fetch token statistics
+    function fetchTokenStats() {
+        fetch('/api/stats/tokens')
+            .then(response => response.json())
+            .then(data => {
+                // Update summary
+                document.getElementById('total-tokens').textContent = data.total_tokens || 0;
+                
+                // Calculate USD value
+                const usdValue = (data.total_tokens || 0) * 0.05;
+                document.getElementById('total-usd-value').textContent = `$${usdValue.toFixed(2)}`;
+                
+                // Update top users
+                updateTopUsers(data.top_users || []);
+                
+                // Update transactions
+                updateTransactions(data.recent_transactions || []);
+            })
+            .catch(error => console.error('Error fetching token stats:', error));
+    }
+    
+    // Fetch daily statistics for token chart
+    function fetchDailyStats(days) {
+        fetch(`/api/stats/daily?days=${days}`)
+            .then(response => response.json())
+            .then(data => {
+                updateTokenChart(data);
+            })
+            .catch(error => console.error('Error fetching daily stats:', error));
+    }
+    
+    // Update token chart
+    function updateTokenChart(data) {
+        const ctx = document.getElementById('token-chart').getContext('2d');
+        
+        // Prepare data for the chart
+        const dates = data.map(item => item.date);
+        const tokenData = data.map(item => item.token_rewards || 0);
+        
+        // Calculate cumulative sum
+        const cumulativeTokens = [];
+        let sum = 0;
+        tokenData.forEach(value => {
+            sum += value;
+            cumulativeTokens.push(sum);
+        });
+        
+        // Create the chart
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [
+                    {
+                        label: 'Daily Tokens',
+                        data: tokenData,
+                        backgroundColor: 'rgba(255, 193, 7, 0.5)',
+                        borderColor: 'rgba(255, 193, 7, 1)',
+                        borderWidth: 2,
+                        type: 'bar',
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Cumulative Tokens',
+                        data: cumulativeTokens,
+                        backgroundColor: 'rgba(23, 162, 184, 0.2)',
+                        borderColor: 'rgba(23, 162, 184, 1)',
+                        borderWidth: 2,
+                        type: 'line',
+                        fill: true,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        type: 'linear',
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Daily Tokens'
+                        }
+                    },
+                    y1: {
+                        beginAtZero: true,
+                        type: 'linear',
+                        position: 'right',
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Cumulative Tokens'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    }
+    
+    // Update top users list
+    function updateTopUsers(users) {
+        const usersList = document.getElementById('top-users-list');
+        usersList.innerHTML = '';
+        
+        if (users.length === 0) {
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item text-center py-3';
+            listItem.textContent = 'No users yet';
+            usersList.appendChild(listItem);
+            return;
+        }
+        
+        // Display users
+        users.forEach((user, index) => {
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+            
+            // Determine badge color based on ranking
+            let badgeClass = 'bg-secondary';
+            if (index === 0) badgeClass = 'bg-warning text-dark'; // Gold
+            else if (index === 1) badgeClass = 'bg-light text-dark border'; // Silver
+            else if (index === 2) badgeClass = 'bg-bronze text-white'; // Bronze
+            
+            // Calculate USD value
+            const usdValue = (user.token_balance || 0) * 0.05;
+            
+            listItem.innerHTML = `
+                <div>
+                    <span class="badge ${badgeClass} me-2">${index + 1}</span>
+                    <span>${user.username}</span>
+                </div>
+                <div>
+                    <span class="badge bg-warning text-dark">${user.token_balance}</span>
+                    <small class="text-muted ms-1">($${usdValue.toFixed(2)})</small>
+                </div>
+            `;
+            
+            usersList.appendChild(listItem);
+        });
+    }
+    
+    // Update transactions table
+    function updateTransactions(transactions) {
+        const tableBody = document.getElementById('transactions-table');
+        tableBody.innerHTML = '';
+        
+        if (transactions.length === 0) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="4" class="text-center py-4">No transactions yet</td>
+                </tr>
+            `;
+            return;
+        }
+        
+        // Populate table with transactions
+        transactions.forEach(tx => {
+            const row = document.createElement('tr');
+            
+            // Format the timestamp
+            let timestamp = tx.timestamp;
+            try {
+                const date = new Date(tx.timestamp);
+                timestamp = date.toLocaleString();
+            } catch (e) {
+                // Keep original if parsing fails
+            }
+            
+            // Format transaction type
+            const txType = tx.transaction_type.charAt(0).toUpperCase() + tx.transaction_type.slice(1);
+            
+            // Build row HTML
+            row.innerHTML = `
+                <td>${timestamp}</td>
+                <td>${tx.username}</td>
+                <td>${txType}</td>
+                <td>${tx.amount}</td>
+            `;
+            
+            tableBody.appendChild(row);
+        });
+    }
+</script>
+{% endblock %}
+
+<!-- templates/users.html - Users page -->
+{% extends "layout.html" %}
+
+{% block title %}Users | Waste Sorting Analytics{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="display-5 mb-4">
+            <i class="fas fa-users me-2"></i>
+            User Management
+        </h1>
+    </div>
+</div>
+
+<!-- User Summary -->
+<div class="row mb-4">
+    <!-- Total Users -->
+    <div class="col-md-4 mb-4">
+        <div class="card border-primary h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-primary">
+                    <i class="fas fa-users me-2"></i>
+                    Total Users
+                </h5>
+                <p class="display-4 mb-0" id="total-users">-</p>
+                <p class="text-muted small">Registered users</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Active Users -->
+    <div class="col-md-4 mb-4">
+        <div class="card border-success h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-success">
+                    <i class="fas fa-user-check me-2"></i>
+                    Active Users
+                </h5>
+                <p class="display-4 mb-0" id="active-users">-</p>
+                <p class="text-muted small">Active in the last 7 days</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- New Users -->
+    <div class="col-md-4 mb-4">
+        <div class="card border-info h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title text-info">
+                    <i class="fas fa-user-plus me-2"></i>
+                    New Users
+                </h5>
+                <p class="display-4 mb-0" id="new-users">-</p>
+                <p class="text-muted small">Joined in the last 30 days</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- User Analysis -->
+<div class="row mb-4">
+    <!-- User Activity Chart -->
+    <div class="col-lg-8 mb-4">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">User Growth</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="user-growth-chart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <!-- User Engagement -->
+    <div class="col-lg-4 mb-4">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">User Engagement</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="engagement-chart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- User Leaderboard -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">User Leaderboard</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Rank</th>
+                                <th>Username</th>
+                                <th>Tokens</th>
+                                <th>USD Value</th>
+                                <th>Items Recycled</th>
+                                <th>Join Date</th>
+                                <th>Last Active</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-leaderboard">
+                            <tr>
+                                <td colspan="7" class="text-center py-4">Loading users...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Fetch data when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchUserStats();
+        fetchTokenStats();
+        
+        // Simulate user growth data (in a real app, this would come from an API)
+        simulateUserGrowthData();
+    });
+    
+    // Fetch user statistics
+    function fetchUserStats() {
+        fetch('/api/stats/users')
+            .then(response => response.json())
+            .then(data => {
+                // Update summary
+                document.getElementById('total-users').textContent = data.total_users || 0;
+                document.getElementById('active-users').textContent = data.active_users || 0;
+                document.getElementById('new-users').textContent = data.new_users || 0;
+                
+                // Update engagement chart
+                updateEngagementChart(data);
+            })
+            .catch(error => console.error('Error fetching user stats:', error));
+    }
+    
+    // Fetch token statistics for leaderboard
+    function fetchTokenStats() {
+        fetch('/api/stats/tokens')
+            .then(response => response.json())
+            .then(data => {
+                // Update leaderboard
+                updateLeaderboard(data.top_users || []);
+            })
+            .catch(error => console.error('Error fetching token stats:', error));
+    }
+    
+    // Update user engagement chart
+    function updateEngagementChart(data) {
+        const ctx = document.getElementById('engagement-chart').getContext('2d');
+        
+        // Calculate percentages
+        const totalUsers = data.total_users || 0;
+        const activeUsers = data.active_users || 0;
+        const inactiveUsers = totalUsers - activeUsers;
+        
+        // Create the chart
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Active Users', 'Inactive Users'],
+                datasets: [{
+                    data: [activeUsers, inactiveUsers],
+                    backgroundColor: [
+                        'rgba(40, 167, 69, 0.7)', // Green for active
+                        'rgba(108, 117, 125, 0.7)'  // Gray for inactive
+                    ],
+                    borderColor: [
+                        'rgba(40, 167, 69, 1)',
+                        'rgba(108, 117, 125, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    }
+    
+    // Simulate user growth data (for demonstration)
+    function simulateUserGrowthData() {
+        const ctx = document.getElementById('user-growth-chart').getContext('2d');
+        
+        // Generate dates for the last 12 months
+        const dates = [];
+        const userData = [];
+        const newUserData = [];
+        
+        const today = new Date();
+        let totalUsers = 5; // Start with some users
+        
+        for (let i = 11; i >= 0; i--) {
+            const d = new Date(today);
+            d.setMonth(today.getMonth() - i);
+            dates.push(d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }));
+            
+            // Simulate some growth
+            const newUsers = Math.floor(Math.random() * 10) + 1;
+            newUserData.push(newUsers);
+            
+            totalUsers += newUsers;
+            userData.push(totalUsers);
+        }
+        
+        // Create the chart
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [
+                    {
+                        label: 'Total Users',
+                        data: userData,
+                        backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                        borderColor: 'rgba(0, 123, 255, 1)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'New Users',
+                        data: newUserData,
+                        backgroundColor: 'rgba(23, 162, 184, 0.5)',
+                        borderColor: 'rgba(23, 162, 184, 1)',
+                        borderWidth: 2,
+                        type: 'bar'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    }
+    
+    // Update user leaderboard
+    function updateLeaderboard(users) {
+        const leaderboard = document.getElementById('user-leaderboard');
+        leaderboard.innerHTML = '';
+        
+        if (users.length === 0) {
+            leaderboard.innerHTML = `
+                <tr>
+                    <td colspan="7" class="text-center py-4">No users yet</td>
+                </tr>
+            `;
+            return;
+        }
+        
+        // Add simulated data for demonstration
+        const enhancedUsers = users.map((user, index) => {
+            // Simulate recycling count (in a real app, this would come from database)
+            const recycledItems = Math.floor(user.token_balance * (Math.random() * 0.5 + 0.8)); // ~1:1 ratio with tokens
+            
+            // Simulate join date and last active
+            const today = new Date();
+            const joinDate = new Date(today);
+            joinDate.setDate(today.getDate() - Math.floor(Math.random() * 180)); // Random date in last 6 months
+            
+            const lastActive = new Date(today);
+            lastActive.setDate(today.getDate() - Math.floor(Math.random() * 14)); // Random date in last 2 weeks
+            
+            return {
+                ...user,
+                recycledItems,
+                joinDate: joinDate.toLocaleDateString(),
+                lastActive: lastActive.toLocaleDateString()
+            };
+        });
+        
+        // Populate leaderboard
+        enhancedUsers.forEach((user, index) => {
+            const row = document.createElement('tr');
+            
+            // Calculate USD value
+            const usdValue = (user.token_balance || 0) * 0.05;
+            
+            // Determine rank badge
+            let rankBadge = `<span class="badge bg-secondary">${index + 1}</span>`;
+            if (index === 0) rankBadge = '<span class="badge bg-warning text-dark">1</span>';
+            else if (index === 1) rankBadge = '<span class="badge bg-light text-dark border">2</span>';
+            else if (index === 2) rankBadge = '<span class="badge bg-bronze text-white">3</span>';
+            
+            // Build row HTML
+            row.innerHTML = `
+                <td>${rankBadge}</td>
+                <td>${user.username}</td>
+                <td>${user.token_balance}</td>
+                <td>$${usdValue.toFixed(2)}</td>
+                <td>${user.recycledItems}</td>
+                <td>${user.joinDate}</td>
+                <td>${user.lastActive}</td>
+            `;
+            
+            leaderboard.appendChild(row);
+        });
+    }
+</script>
+{% endblock %}
+
+<!-- templates/404.html - 404 error page -->
+{% extends "layout.html" %}
+
+{% block title %}404 Not Found | Waste Sorting Analytics{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 text-center">
+        <h1 class="display-1 text-muted">404</h1>
+        <h2 class="mb-4">Page Not Found</h2>
+        <p class="lead">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+        <a href="/" class="btn btn-primary mt-3">
+            <i class="fas fa-home me-2"></i>
+            <!-- Continuing from where we left off in 404.html -->
+            Return Home
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+<!-- templates/500.html - 500 error page -->
+{% extends "layout.html" %}
+
+{% block title %}500 Server Error | Waste Sorting Analytics{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 text-center">
+        <h1 class="display-1 text-muted">500</h1>
+        <h2 class="mb-4">Server Error</h2>
+        <p class="lead">Something went wrong on our end. We're working to fix the issue.</p>
+        <a href="/" class="btn btn-primary mt-3">
+            <i class="fas fa-home me-2"></i>
+            Return Home
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+<!-- templates/debug.html - Debug page for developers -->
+{% extends "layout.html" %}
+
+{% block title %}Debug | Waste Sorting Analytics{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="display-5 mb-4">
+            <i class="fas fa-bug me-2"></i>
+            Debug Information
+        </h1>
+        <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            This page is only available in debug mode.
+        </div>
+    </div>
+</div>
+
+<!-- Debug Data -->
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Recent Events (Sample)</h5>
+            </div>
+            <div class="card-body">
+                <pre class="bg-light p-3 rounded">{{ data.events | tojson(indent=2) }}</pre>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Daily Statistics (Sample)</h5>
+            </div>
+            <div class="card-body">
+                <pre class="bg-light p-3 rounded">{{ data.daily_stats | tojson(indent=2) }}</pre>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Total Statistics</h5>
+            </div>
+            <div class="card-body">
+                <pre class="bg-light p-3 rounded">{{ data.totals | tojson(indent=2) }}</pre>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Token Statistics</h5>
+            </div>
+            <div class="card-body">
+                <pre class="bg-light p-3 rounded">{{ data.token_stats | tojson(indent=2) }}</pre>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">User Statistics</h5>
+            </div>
+            <div class="card-body">
+                <pre class="bg-light p-3 rounded">{{ data.user_stats | tojson(indent=2) }}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- static/css/style.css - Custom CSS styles -->
+/* Custom CSS for Waste Sorting Analytics Dashboard */
+
+/* Global Styles */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Custom Bronze Badge Color (for 3rd place) */
+.bg-bronze {
+    background-color: #cd7f32;
+}
+
+/* Cards */
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.card-header {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Tables */
+.table th {
+    font-weight: 600;
+}
+
+/* Custom Card Border Colors */
+.card.border-primary {
+    border-left: 4px solid #007bff !important;
+}
+
+.card.border-success {
+    border-left: 4px solid #28a745 !important;
+}
+
+.card.border-info {
+    border-left: 4px solid #17a2b8 !important;
+}
+
+.card.border-warning {
+    border-left: 4px solid #ffc107 !important;
+}
+
+.card.border-danger {
+    border-left: 4px solid #dc3545 !important;
+}
+
+.card.border-secondary {
+    border-left: 4px solid #6c757d !important;
+}
+
+/* Navigation Active Link */
+.nav-link.active {
+    font-weight: bold;
+}
+
+/* Chart Containers */
+canvas {
+    max-width: 100%;
+}
+
+/* Hover Effects */
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Responsive Font Sizes */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Thumbnail Images */
+.img-thumbnail {
+    object-fit: cover;
+}
+
+/* static/js/main.js - Shared JavaScript functions */
+// Main JavaScript file for Waste Sorting Analytics Dashboard
+
+// Set active nav link based on current page
+document.addEventListener('DOMContentLoaded', function() {
+    // Get current page path
+    const path = window.location.pathname;
+    
+    // Find nav links
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    
+    // Activate appropriate link
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        
+        if (path === '/') {
+            // Activate Dashboard for home
+            if (href === '/') {
+                link.classList.add('active');
+            }
+        } else if (href !== '/' && path.startsWith(href)) {
+            // Activate other links based on path
+            link.classList.add('active');
+        }
+    });
+    
+    // Initialize tooltips
+    if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    }
+});
+
+// Format date string
+function formatDate(dateString) {
+    try {
+        const date = new Date(dateString);
+        return date.toLocaleString();
+    } catch (e) {
+        return dateString;
+    }
+}
+
+// Format number with commas for thousands separator
+function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// Format currency
+function formatCurrency(amount) {
+    return '$' + parseFloat(amount).toFixed(2);
+}
+
+// Handle errors in fetch requests
+function handleFetchError(error, elementId, message) {
+    console.error(error);
+    if (elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.innerHTML = `<div class="alert alert-danger">${message || 'Error loading data'}</div>`;
+        }
+    }
+}
