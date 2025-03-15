@@ -607,28 +607,25 @@ class WasteSorterApp:
                 # Get class name from mapping
                 class_name = self.class_mapping.get(str(predicted_class), f"Class {predicted_class}")
                 
-                if "can" in class_name.lower():
-                    sort_as = "Can"
-                elif "recycling" in class_name.lower():
-                    sort_as = "Recycling"
+                # Simplified classification - just check if it's recyclable
+                if "can" in class_name.lower() or "recycling" in class_name.lower():
+                    sort_as = "Recycling"  # All recyclables (including cans) go to recycling
                 else:
-                    sort_as = "Garbage"
+                    sort_as = "Garbage"    # Everything else goes to garbage
             else:
                 # Using pretrained model
                 predictions = self.model.predict(processed_img)
                 predicted_class = np.argmax(predictions[0])
                 confidence = float(predictions[0][predicted_class])
                 
-                # Determine if can, recyclable, or garbage based on ImageNet classes
-                can_classes = [482, 483, 810]  # Can related classes
-                recyclable_classes = [494, 440, 672, 802, 965, 611]  # Recyclable classes
+                # Combined recyclable classes (cans + recyclables)
+                recyclable_classes = [482, 483, 810, 494, 440, 672, 802, 965, 611]
                 
-                if predicted_class in can_classes:
-                    sort_as = "Can"
-                elif predicted_class in recyclable_classes:
-                    sort_as = "Recycling"
+                # Simplified classification
+                if predicted_class in recyclable_classes:
+                    sort_as = "Recycling"  # All recyclables go to recycling
                 else:
-                    sort_as = "Garbage"
+                    sort_as = "Garbage"    # Everything else goes to garbage
             
             # Only auto-sort if confidence is high
             if confidence > 0.7:  # 70% confidence threshold
@@ -680,28 +677,25 @@ class WasteSorterApp:
                 # Get class name from mapping
                 class_name = self.class_mapping.get(str(predicted_class), f"Class {predicted_class}")
                 
-                if "can" in class_name.lower():
-                    sort_as = "Can"
-                elif "recycling" in class_name.lower():
-                    sort_as = "Recycling"
+                # Simplified classification - just check if it's recyclable
+                if "can" in class_name.lower() or "recycling" in class_name.lower():
+                    sort_as = "Recycling"  # All recyclables (including cans) go to recycling
                 else:
-                    sort_as = "Garbage"
+                    sort_as = "Garbage"    # Everything else goes to garbage
             else:
                 # Using pretrained model
                 predictions = self.model.predict(processed_img)
                 predicted_class = np.argmax(predictions[0])
                 confidence = float(predictions[0][predicted_class])
                 
-                # Determine if can, recyclable, or garbage based on ImageNet classes
-                can_classes = [482, 483, 810]  # Can related classes
-                recyclable_classes = [494, 440, 672, 802, 965, 611]  # Recyclable classes
+                # Combined recyclable classes (cans + recyclables)
+                recyclable_classes = [482, 483, 810, 494, 440, 672, 802, 965, 611]
                 
-                if predicted_class in can_classes:
-                    sort_as = "Can"
-                elif predicted_class in recyclable_classes:
-                    sort_as = "Recycling"
+                # Simplified classification
+                if predicted_class in recyclable_classes:
+                    sort_as = "Recycling"  # All recyclables go to recycling
                 else:
-                    sort_as = "Garbage"
+                    sort_as = "Garbage"    # Everything else goes to garbage
             
             # Update UI
             self.class_label.configure(text=f"Class: {predicted_class}")
@@ -741,12 +735,13 @@ class WasteSorterApp:
         
         try:
             # Determine command based on classification
-            if classification == "Can":
-                command = 'C'
-                self.can_count += 1
-            elif classification == "Recycling":
+            if classification == "Recycling":
                 command = 'R'
-                self.recycling_count += 1
+                # Check if it's specifically a can
+                if "can" in self.class_label.cget("text").lower():
+                    self.can_count += 1
+                else:
+                    self.recycling_count += 1
             else:  # Garbage
                 command = 'G'
                 self.garbage_count += 1
@@ -777,7 +772,7 @@ class WasteSorterApp:
                 event_id = self.db.add_sort_event(
                     classification.lower(),
                     self.confidence,
-                    "recycling" if classification != "Garbage" else "garbage",
+                    "recycling" if classification == "Recycling" else "garbage",
                     self.current_frame,
                     None,  # user_id
                     metadata
