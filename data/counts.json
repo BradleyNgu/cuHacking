@@ -1,7 +1,7 @@
 {
-    "cans": 0,
-    "recycling": 0,
-    "garbage": 1,
-    "total": 1,
-    "last_updated": "2025-03-16T00:10:55.704884"
+    "cans": 3,
+    "recycling": 1,
+    "garbage": 5,
+    "total": 9,
+    "last_updated": "2025-03-16T00:28:24.141621"
 }

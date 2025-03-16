@@ -6,6 +6,7 @@ import threading
 import cv2
 import numpy as np
 import tensorflow as tf
+from tensorflow import keras
 import serial
 from serial.tools import list_ports
 import tkinter as tk
@@ -1282,9 +1283,11 @@ class WasteSorterApp:
                 if trainer.train_generator is None or trainer.validation_generator is None:
                     trainer.create_data_generators()
                 
-                # Create callbacks
-                from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
-                
+                # Create callbacks from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
+                ModelCheckpoint = keras.callbacks.ModelCheckpoint
+                EarlyStopping = keras.callbacks.EarlyStopping
+                ReduceLROnPlateau = keras.callbacks.ReduceLROnPlateau
+
                 model_checkpoint = ModelCheckpoint(
                     os.path.join(trainer.model_dir, 'best_model.h5'),
                     monitor='val_accuracy',
