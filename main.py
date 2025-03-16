@@ -944,16 +944,23 @@ class WasteSorterApp:
                 import json
                 with open(counts_file, "r") as f:
                     counts_data = json.load(f)
-                
-                self.can_count = counts_data.get("cans", 0)
-                self.recycling_count = counts_data.get("recycling", 0)
-                self.garbage_count = counts_data.get("garbage", 0)
-                self.total_count = counts_data.get("total", 0)
+                last_updated = counts_data.get("last_updated", None)
+                today = datetime.now().strftime("%Y-%m-%d")
+
+                if last_updated and last_updated[:10] != today:
+                    self.can_count = 0
+                    self.recycling_count = 0 
+                    self.garbage_count = 0
+                    self.total_count = 0
+                    self.save_counts()
+                else:
+                    self.can_count = counts_data.get("cans", 0)
+                    self.recycling_count = counts_data.get("recycling", 0)
+                    self.garbage_count = counts_data.get("garbage", 0)
+                    self.total_count = counts_data.get("total", 0)
                 
                 # Update UI
                 self.update_counter_display()
-                
-                logger.info(f"Loaded counts from {counts_file}")
         
         except Exception as e:
             logger.error(f"Error loading counts: {str(e)}")
