@@ -49,7 +49,6 @@ while True:
     confidence = predictions[0][predicted_class] * 100  # Confidence score
 
     if confidence > 90:
-        sleep(confidence_time)
         print("Wait 5 seconds")
     #if confidence > 90:
     #    print(f"Predicted class: {predicted_class}")
