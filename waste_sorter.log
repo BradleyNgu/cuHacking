@@ -1,0 +1,3 @@
+2025-03-15 20:41:37,644 - WasteSorter - INFO - Loaded pre-trained MobileNetV2 model
+2025-03-15 20:41:45,193 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 20:41:45,193 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
