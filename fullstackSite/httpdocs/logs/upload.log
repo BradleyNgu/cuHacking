@@ -1,0 +1,7 @@
+2025-03-15 17:32:46 - INFO - Configuration loaded
+2025-03-15 17:32:46 - INFO - Starting upload (last upload: 2025-03-15T15:45:22.000Z)
+2025-03-15 17:32:46 - INFO - Found 12 new events since 2025-03-15T15:45:22.000Z
+2025-03-15 17:32:47 - INFO - Retrieved 30 daily statistics records
+2025-03-15 17:32:47 - INFO - Sending data to http://example.co/upload_data.php: 12 events, 30 stats
+2025-03-15 17:32:49 - INFO - Upload successful: Processed 12 events and 30 statistics records
+2025-03-15 17:32:49 - INFO - Upload complete - 12 events and 30 stats processed

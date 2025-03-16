@@ -1,0 +1,3 @@
+2025-03-15 16:35:49,454 - INFO - Initializing database at ./data/sorting_data.db
+2025-03-15 16:35:49,454 - INFO - Creating database tables...
+2025-03-15 16:35:49,455 - INFO - Database initialization completed successfully!

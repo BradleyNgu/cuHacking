@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Sorting Analytics</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-recycle me-2"></i>
+                Waste Sorting Analytics
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Sorting Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="stats.html">Statistics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container py-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="display-5 mb-4">
+                    <i class="fas fa-tachometer-alt me-2"></i>
+                    Dashboard Overview
+                </h1>
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="row mb-4">
+            <!-- Total Sorted Items -->
+            <div class="col-md-3 mb-4">
+                <div class="card border-primary h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">
+                            <i class="fas fa-sort me-2"></i>
+                            Total Sorted
+                        </h5>
+                        <p class="display-4 mb-0" id="total-sorted">-</p>
+                        <p class="text-muted small">All-time total items sorted</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recycling Rate -->
+            <div class="col-md-3 mb-4">
+                <div class="card border-success h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">
+                            <i class="fas fa-leaf me-2"></i>
+                            Recycling Rate
+                        </h5>
+                        <p class="display-4 mb-0" id="recycling-rate">-</p>
+                        <p class="text-muted small">Percentage of items recycled</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cans Collected -->
+            <div class="col-md-3 mb-4">
+                <div class="card border-info h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">
+                            <i class="fas fa-wine-bottle me-2"></i>
+                            Cans Collected
+                        </h5>
+                        <p class="display-4 mb-0" id="cans-collected">-</p>
+                        <p class="text-muted small">Total cans collected</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Garbage Items -->
+            <div class="col-md-3 mb-4">
+                <div class="card border-secondary h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-secondary">
+                            <i class="fas fa-trash me-2"></i>
+                            Garbage Items
+                        </h5>
+                        <p class="display-4 mb-0" id="garbage-items">-</p>
+                        <p class="text-muted small">Total garbage items</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="row mb-4">
+            <!-- Daily Sorting Activity -->
+            <div class="col-lg-8 mb-4">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Daily Sorting Activity</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="daily-chart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Distribution by Type -->
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Distribution by Type</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="type-distribution-chart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="row mb-4">
+            <!-- Recent Sorting Events -->
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Recent Sorting Events</h5>
+                        <a href="events.html" class="btn btn-sm btn-outline-primary">View All</a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Item Type</th>
+                                        <th>Confidence</th>
+                                        <th>Destination</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recent-events">
+                                    <tr>
+                                        <td colspan="4" class="text-center">Loading...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-light py-3 mt-auto">
+        <div class="container text-center">
+            <span class="text-muted">
+                Waste Sorting Analytics Dashboard &copy; 2025
+            </span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // API endpoint - direct database access through PHP
+        const API_ENDPOINT = 'api.php';
+        
+        // Fetch data when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchDashboardData();
+        });
+        
+        // Main function to fetch all dashboard data
+        function fetchDashboardData() {
+            // Show loading indicators
+            document.getElementById('total-sorted').innerHTML = '<div class="spinner-border spinner-border-sm" role="status"></div>';
+            document.getElementById('cans-collected').innerHTML = '<div class="spinner-border spinner-border-sm" role="status"></div>';
+            document.getElementById('garbage-items').innerHTML = '<div class="spinner-border spinner-border-sm" role="status"></div>';
+            document.getElementById('recycling-rate').innerHTML = '<div class="spinner-border spinner-border-sm" role="status"></div>';
+            
+            // Fetch totals from the database
+            fetch(`${API_ENDPOINT}?action=get_totals`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('total-sorted').textContent = data.grand_total || 0;
+                    document.getElementById('cans-collected').textContent = data.total_cans || 0;
+                    document.getElementById('garbage-items').textContent = data.total_garbage || 0;
+                    
+                    // Calculate recycling rate
+                    const totalRecycling = (data.total_cans || 0) + (data.total_recycling || 0);
+                    const totalItems = (data.grand_total || 0);
+                    const recyclingRate = totalItems > 0 ? (totalRecycling / totalItems * 100).toFixed(1) : 0;
+                    document.getElementById('recycling-rate').textContent = recyclingRate + '%';
+                    
+                    // Update distribution chart
+                    updateDistributionChart(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching total stats:', error);
+                    document.getElementById('total-sorted').textContent = 'Error';
+                    document.getElementById('cans-collected').textContent = 'Error';
+                    document.getElementById('garbage-items').textContent = 'Error';
+                    document.getElementById('recycling-rate').textContent = 'Error';
+                });
+            
+            // Fetch daily statistics for chart
+            fetch(`${API_ENDPOINT}?action=get_daily_stats&days=30`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    updateDailyChart(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching daily stats:', error);
+                    // Clear chart area with error message
+                    document.getElementById('daily-chart').getContext('2d').fillText('Error loading data', 150, 100);
+                });
+            
+            // Fetch recent events
+            fetch(`${API_ENDPOINT}?action=get_events&limit=5`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    updateRecentEvents(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching recent events:', error);
+                    document.getElementById('recent-events').innerHTML = 
+                        '<tr><td colspan="4" class="text-center">Error loading events</td></tr>';
+                });
+        }
+        
+        // Update distribution chart
+        function updateDistributionChart(data) {
+            const ctx = document.getElementById('type-distribution-chart').getContext('2d');
+            
+            // Data for the chart
+            const chartData = {
+                labels: ['Cans', 'Recycling', 'Garbage'],
+                datasets: [{
+                    data: [
+                        data.total_cans || 0,
+                        data.total_recycling || 0,
+                        data.total_garbage || 0
+                    ],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.7)', // Blue for cans
+                        'rgba(75, 192, 192, 0.7)', // Teal for recycling
+                        'rgba(255, 99, 132, 0.7)'  // Red for garbage
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+            
+            // Create the chart
+            new Chart(ctx, {
+                type: 'pie',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Update daily chart
+        function updateDailyChart(data) {
+            const ctx = document.getElementById('daily-chart').getContext('2d');
+            
+            // Prepare data for the chart
+            const dates = data.map(item => {
+                const date = new Date(item.date);
+                return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            });
+            const canData = data.map(item => parseInt(item.can_count) || 0);
+            const recyclingData = data.map(item => parseInt(item.recycling_count) || 0);
+            const garbageData = data.map(item => parseInt(item.garbage_count) || 0);
+            
+            // Create the chart
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dates,
+                    datasets: [
+                        {
+                            label: 'Cans',
+                            data: canData,
+                            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Recycling',
+                            data: recyclingData,
+                            backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Garbage',
+                            data: garbageData,
+                            backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            stacked: true
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Update recent events table
+        function updateRecentEvents(events) {
+            const tableBody = document.getElementById('recent-events');
+            tableBody.innerHTML = '';
+            
+            if (events.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = '<td colspan="4" class="text-center">No events yet</td>';
+                tableBody.appendChild(row);
+                return;
+            }
+            
+            // Add rows for each event
+            events.forEach(event => {
+                const row = document.createElement('tr');
+                
+                // Format the timestamp
+                const time = event.formatted_time || new Date(event.timestamp).toLocaleString();
+                
+                // Create confidence badge
+                let confidenceBadge = '';
+                const confidence = parseFloat(event.confidence);
+                if (confidence >= 0.9) {
+                    confidenceBadge = '<span class="badge bg-success">High</span>';
+                } else if (confidence >= 0.7) {
+                    confidenceBadge = '<span class="badge bg-warning text-dark">Medium</span>';
+                } else {
+                    confidenceBadge = '<span class="badge bg-danger">Low</span>';
+                }
+                
+                // Create destination badge
+                let destinationBadge = '';
+                if (event.sort_destination === 'recycling') {
+                    destinationBadge = '<span class="badge bg-info">Recycling</span>';
+                } else {
+                    destinationBadge = '<span class="badge bg-secondary">Garbage</span>';
+                }
+                
+                // Build row HTML
+                row.innerHTML = `
+                    <td>${time}</td>
+                    <td>${event.item_type}</td>
+                    <td>${confidenceBadge} ${(confidence * 100).toFixed(1)}%</td>
+                    <td>${destinationBadge}</td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+        }
+        
+        // Add a refresh button for easier testing
+        document.addEventListener('DOMContentLoaded', function() {
+            const refreshButton = document.createElement('button');
+            refreshButton.className = 'btn btn-sm btn-outline-secondary position-fixed';
+            refreshButton.style.bottom = '20px';
+            refreshButton.style.right = '20px';
+            refreshButton.style.zIndex = '1000';
+            refreshButton.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Data';
+            refreshButton.addEventListener('click', fetchDashboardData);
+            
+            document.body.appendChild(refreshButton);
+        });
+    </script>
+</body>
+</html>

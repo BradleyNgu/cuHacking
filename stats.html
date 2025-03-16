@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics - Waste Sorting Analytics</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-recycle me-2"></i>
+                Waste Sorting Analytics
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Sorting Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="stats.html">Statistics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container py-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="display-5 mb-4">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    Waste Sorting Statistics
+                </h1>
+            </div>
+        </div>
+
+        <!-- Time Range Controls -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <label for="timeRange" class="form-label">Time Range:</label>
+                                <select id="timeRange" class="form-select">
+                                    <option value="7">Last 7 Days</option>
+                                    <option value="30" selected>Last 30 Days</option>
+                                    <option value="90">Last 90 Days</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 d-grid d-md-flex">
+                                <button id="updateRangeBtn" class="btn btn-primary">
+                                    <i class="fas fa-sync-alt me-2"></i>Update
+                                </button>
+                            </div>
+                            <div class="col-md-4 d-grid d-md-flex justify-content-md-end">
+                                <button id="exportCsvBtn" class="btn btn-outline-primary">
+                                    <i class="fas fa-download me-2"></i>Export CSV
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Statistics -->
+        <div class="row mb-4">
+            <!-- Total Sorted Items -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-primary h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">
+                            <i class="fas fa-sort me-2"></i>
+                            Total Sorted
+                        </h5>
+                        <p class="display-4 mb-0" id="total-sorted">-</p>
+                        <p class="text-muted small">All-time total items sorted</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recycling Rate -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-success h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">
+                            <i class="fas fa-leaf me-2"></i>
+                            Recycling Rate
+                        </h5>
+                        <p class="display-4 mb-0" id="recycling-rate">-</p>
+                        <p class="text-muted small">Percentage of items recycled</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cans Collected -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-info h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">
+                            <i class="fas fa-wine-bottle me-2"></i>
+                            Cans Collected
+                        </h5>
+                        <p class="display-4 mb-0" id="cans-collected">-</p>
+                        <p class="text-muted small">Total cans collected</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Garbage Items -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-secondary h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-secondary">
+                            <i class="fas fa-trash me-2"></i>
+                            Garbage Items
+                        </h5>
+                        <p class="display-4 mb-0" id="garbage-items">-</p>
+                        <p class="text-muted small">Total garbage items</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="row mb-4">
+            <!-- Daily Sorting Activity -->
+            <div class="col-lg-8 mb-4">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Daily Sorting Activity</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="daily-chart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Distribution by Type -->
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Distribution by Type</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="type-distribution-chart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sorting Trends -->
+        <div class="row mb-4">
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Sorting Trends</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="trend-chart" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Raw Data</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Cans</th>
+                                        <th>Recycling</th>
+                                        <th>Garbage</th>
+                                        <th>Total</th>
+                                        <th>Recycling Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="data-table">
+                                    <tr>
+                                        <td colspan="6" class="text-center">Loading...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-light py-3 mt-auto">
+        <div class="container text-center">
+            <span class="text-muted">
+                Waste Sorting Analytics Dashboard &copy; 2025
+            </span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // API base URL - change this to your API server if different
+        const API_BASE_URL = '../static/api';
+        
+        // DOM elements
+        const timeRangeSelect = document.getElementById('timeRange');
+        const updateRangeBtn = document.getElementById('updateRangeBtn');
+        const exportCsvBtn = document.getElementById('exportCsvBtn');
+        const dataTable = document.getElementById('data-table');
+        
+        // Chart objects
+        let dailyChart = null;
+        let distributionChart = null;
+        let trendChart = null;
+        
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchData();
+        });
+        
+        // Update range button click
+        updateRangeBtn.addEventListener('click', fetchData);
+        
+        // Export CSV button click
+        exportCsvBtn.addEventListener('click', function() {
+            // Generate sample CSV in static mode
+            generateSampleCSV();
+        });
+        
+        // Fetch data from static JSON files
+        function fetchData() {
+            const days = timeRangeSelect.value;
+            
+            // Fetch total statistics from JSON
+            fetch(`${API_BASE_URL}/totals.json`)
+                .then(response => response.json())
+                .then(data => {
+                    updateSummaryStatistics(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching totals:', error);
+                    // Load sample data if API fails
+                    loadSampleSummaryData();
+                });
+            
+            // Fetch daily statistics from JSON
+            fetch(`${API_BASE_URL}/daily.json`)
+                .then(response => response.json())
+                .then(data => {
+                    // Filter by selected time range
+                    const filteredData = filterDataByTimeRange(data, days);
+                    updateCharts(filteredData);
+                    updateDataTable(filteredData);
+                })
+                .catch(error => {
+                    console.error('Error fetching daily stats:', error);
+                    // Load sample data if API fails
+                    loadSampleData(days);
+                });
+        }
+        
+        // Filter data by time range
+        function filterDataByTimeRange(data, days) {
+            const today = new Date();
+            const cutoffDate = new Date(today);
+            cutoffDate.setDate(cutoffDate.getDate() - days);
+            
+            return data.filter(item => {
+                const itemDate = new Date(item.date);
+                return itemDate >= cutoffDate;
+            });
+        }
+        
+        // Load sample summary data if API fails
+        function loadSampleSummaryData() {
+            const sampleData = {
+                total_cans: 246,
+                total_recycling: 183,
+                total_garbage: 129,
+                grand_total: 558
+            };
+            
+            updateSummaryStatistics(sampleData);
+        }
+        
+        // Load sample data if API fails
+        function loadSampleData(days) {
+            const today = new Date();
+            const sampleData = [];
+            
+            // Generate sample data for the selected time range
+            for (let i = days - 1; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toISOString().split('T')[0];
+                
+                sampleData.push({
+                    date: dateStr,
+                    can_count: Math.floor(Math.random() * 10) + 1,
+                    recycling_count: Math.floor(Math.random() * 8) + 1,
+                    garbage_count: Math.floor(Math.random() * 6) + 1,
+                    total_count: 0 // Will be calculated later
+                });
+            }
+            
+            // Calculate total counts
+            sampleData.forEach(item => {
+                item.total_count = item.can_count + item.recycling_count + item.garbage_count;
+            });
+            
+            updateCharts(sampleData);
+            updateDataTable(sampleData);
+        }
+        
+        // Update summary statistics
+        function updateSummaryStatistics(data) {
+            document.getElementById('total-sorted').textContent = data.grand_total || 0;
+            document.getElementById('cans-collected').textContent = data.total_cans || 0;
+            document.getElementById('garbage-items').textContent = data.total_garbage || 0;
+            
+            // Calculate recycling rate
+            const totalRecycling = (data.total_cans || 0) + (data.total_recycling || 0);
+            const totalItems = (data.grand_total || 0);
+            const recyclingRate = totalItems > 0 ? (totalRecycling / totalItems * 100).toFixed(1) : 0;
+            document.getElementById('recycling-rate').textContent = recyclingRate + '%';
+        }
+        
+        // Update charts
+        function updateCharts(data) {
+            // Sort data by date
+            data.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
+            // Format dates for better display
+            const formattedDates = data.map(item => {
+                const date = new Date(item.date);
+                return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            });
+            
+            // Get data for charts
+            const canData = data.map(item => item.can_count || 0);
+            const recyclingData = data.map(item => item.recycling_count || 0);
+            const garbageData = data.map(item => item.garbage_count || 0);
+            const totalData = data.map(item => item.total_count || 0);
+            
+            // Calculate recycling rates for trend chart
+            const recyclingRates = data.map(item => {
+                const totalRecycling = (item.can_count || 0) + (item.recycling_count || 0);
+                const total = item.total_count || 0;
+                return total > 0 ? (totalRecycling / total * 100) : 0;
+            });
+            
+            // Calculate aggregated data for distribution chart
+            const totalCans = canData.reduce((sum, value) => sum + value, 0);
+            const totalRecycling = recyclingData.reduce((sum, value) => sum + value, 0);
+            const totalGarbage = garbageData.reduce((sum, value) => sum + value, 0);
+            
+            // Update daily chart
+            updateDailyChart(formattedDates, canData, recyclingData, garbageData);
+            
+            // Update distribution chart
+            updateDistributionChart(totalCans, totalRecycling, totalGarbage);
+            
+            // Update trend chart
+            updateTrendChart(formattedDates, totalData, recyclingRates);
+        }
+        
+        // Update daily chart
+        function updateDailyChart(dates, canData, recyclingData, garbageData) {
+            const ctx = document.getElementById('daily-chart').getContext('2d');
+            
+            if (dailyChart) {
+                dailyChart.destroy();
+            }
+            
+            dailyChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dates,
+                    datasets: [
+                        {
+                            label: 'Cans',
+                            data: canData,
+                            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Recycling',
+                            data: recyclingData,
+                            backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Garbage',
+                            data: garbageData,
+                            backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            stacked: true
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Update distribution chart
+        function updateDistributionChart(totalCans, totalRecycling, totalGarbage) {
+            const ctx = document.getElementById('type-distribution-chart').getContext('2d');
+            
+            if (distributionChart) {
+                distributionChart.destroy();
+            }
+            
+            distributionChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Cans', 'Recycling', 'Garbage'],
+                    datasets: [{
+                        data: [totalCans, totalRecycling, totalGarbage],
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.7)', // Blue for cans
+                            'rgba(75, 192, 192, 0.7)', // Teal for recycling
+                            'rgba(255, 99, 132, 0.7)'  // Red for garbage
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(255, 99, 132, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Update trend chart
+        function updateTrendChart(dates, totalData, recyclingRates) {
+            const ctx = document.getElementById('trend-chart').getContext('2d');
+            
+            if (trendChart) {
+                trendChart.destroy();
+            }
+            
+            trendChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dates,
+                    datasets: [
+                        {
+                            label: 'Total Items',
+                            data: totalData,
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.1)',
+                            borderWidth: 2,
+                            fill: false,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Recycling Rate (%)',
+                            data: recyclingRates,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                            borderWidth: 2,
+                            fill: false,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Items'
+                            },
+                            beginAtZero: true
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Recycling Rate (%)'
+                            },
+                            min: 0,
+                            max: 100,
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Update data table
+        function updateDataTable(data) {
+            // Sort data by date in descending order (newest first)
+            data.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Clear table
+            dataTable.innerHTML = '';
+            
+            // Add rows
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                
+                // Format date
+                const dateObj = new Date(item.date);
+                const formattedDate = dateObj.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                });
+                
+                // Calculate recycling rate
+                const totalRecycling = (item.can_count || 0) + (item.recycling_count || 0);
+                const total = item.total_count || 0;
+                const recyclingRate = total > 0 ? (totalRecycling / total * 100).toFixed(1) : 0;
+                
+                // Row content
+                row.innerHTML = `
+                    <td>${formattedDate}</td>
+                    <td>${item.can_count || 0}</td>
+                    <td>${item.recycling_count || 0}</td>
+                    <td>${item.garbage_count || 0}</td>
+                    <td>${item.total_count || 0}</td>
+                    <td>${recyclingRate}%</td>
+                `;
+                
+                dataTable.appendChild(row);
+            });
+            
+            // If no data
+            if (data.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = '<td colspan="6" class="text-center">No data available</td>';
+                dataTable.appendChild(row);
+            }
+        }
+        
+        // Generate sample CSV
+        function generateSampleCSV() {
+            // Create CSV content
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "date,can_count,recycling_count,garbage_count,total_count\r\n";
+            
+            // Generate sample data
+            const today = new Date();
+            for (let i = 29; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toISOString().split('T')[0];
+                
+                const canCount = Math.floor(Math.random() * 10) + 1;
+                const recyclingCount = Math.floor(Math.random() * 8) + 1;
+                const garbageCount = Math.floor(Math.random() * 6) + 1;
+                const totalCount = canCount + recyclingCount + garbageCount;
+                
+                csvContent += `${dateStr},${canCount},${recyclingCount},${garbageCount},${totalCount}\r\n`;
+            }
+            
+            // Create download link
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "waste_sorting_stats.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
