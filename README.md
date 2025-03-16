@@ -61,8 +61,8 @@ waste-sorting-system/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/waste-sorting-system.git
-cd waste-sorting-system
+git clone https://github.com/BradleyNgu/cuHacking.git
+cd cuHacking
 ```
 
 ### 2. Install Python Dependencies
