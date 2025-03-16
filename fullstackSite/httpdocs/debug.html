@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Debug - Waste Sorting Analytics</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/style.css">
+    
+    <style>
+        .debug-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+        }
+        .debug-info {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background-color: #f8f9fa;
+            border-radius: 0.25rem;
+        }
+        pre {
+            margin-bottom: 0;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .json-display {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+            overflow-x: auto;
+        }
+        .debug-timer {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            border-radius: 0.25rem;
+            font-size: 0.9rem;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-recycle me-2"></i>
+                Waste Sorting Analytics
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Sorting Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="stats.html">Statistics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="debug.html">Debug</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container py-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="display-5 mb-4">
+                    <i class="fas fa-bug me-2"></i>
+                    Debug Information
+                </h1>
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    This page is for debugging purposes only. It displays real-time data directly from JSON files.
+                </div>
+            </div>
+        </div>
+
+        <!-- Database Info -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">JSON File Information</h5>
+                        <button class="btn btn-sm btn-primary" id="refreshButton">
+                            <i class="fas fa-sync-alt me-1"></i> Refresh Data
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="debug-section">
+                            <h6 class="mb-3">JSON File Status</h6>
+                            <div class="debug-info">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p><strong>totals.json:</strong> <span id="totals-status">Checking...</span></p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p><strong>daily.json:</strong> <span id="daily-status">Checking...</span></p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p><strong>events.json:</strong> <span id="events-status">Checking...</span></p>
+                                    </div>
+                                </div>
+                                <p><strong>Last Checked:</strong> <span id="last-checked">Never</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JSON Data Display -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Raw JSON Data</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Totals Data -->
+                        <div class="debug-section">
+                            <h6 class="mb-3">totals.json</h6>
+                            <div class="json-display">
+                                <pre id="totals-json">Loading...</pre>
+                            </div>
+                        </div>
+                        
+                        <!-- Daily Stats -->
+                        <div class="debug-section">
+                            <h6 class="mb-3">Sample from daily.json</h6>
+                            <div class="json-display">
+                                <pre id="daily-json">Loading...</pre>
+                            </div>
+                        </div>
+                        
+                        <!-- Events Sample -->
+                        <div class="debug-section">
+                            <h6 class="mb-3">Sample from events.json</h6>
+                            <div class="json-display">
+                                <pre id="events-json">Loading...</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Endpoints -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Direct JSON File Links</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>static/api/totals.json</strong>
+                                    <p class="mb-0 text-muted">Total statistics</p>
+                                </div>
+                                <a href="static/api/totals.json" target="_blank" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i> View
+                                </a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>static/api/daily.json</strong>
+                                    <p class="mb-0 text-muted">Daily statistics</p>
+                                </div>
+                                <a href="static/api/daily.json" target="_blank" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i> View
+                                </a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>static/api/events.json</strong>
+                                    <p class="mb-0 text-muted">Sort events</p>
+                                </div>
+                                <a href="static/api/events.json" target="_blank" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i> View
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Log Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Debug Log</h5>
+                        <button id="clearLogButton" class="btn btn-sm btn-outline-secondary">
+                            <i class="fas fa-trash-alt me-1"></i> Clear Log
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <pre id="debug-log" class="p-3 bg-light" style="max-height:300px; overflow-y:auto">Debug log initialized.</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Auto-refresh timer display -->
+    <div class="debug-timer">
+        <div>Next refresh in: <span id="refresh-countdown">30</span>s</div>
+        <div class="form-check form-switch mt-1">
+            <input class="form-check-input" type="checkbox" id="autoRefreshToggle" checked>
+            <label class="form-check-label" for="autoRefreshToggle">Auto-refresh</label>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-light py-3 mt-auto">
+        <div class="container text-center">
+            <span class="text-muted">
+                Waste Sorting Analytics Dashboard © 2025
+            </span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Configuration
+        const config = {
+            refreshInterval: 10000, // 10 seconds
+            jsonFiles: {
+                totals: 'static/api/totals.json',
+                daily: 'static/api/daily.json',
+                events: 'static/api/events.json'
+            }
+        };
+
+        // State variables
+        let state = {
+            lastRefreshTime: null,
+            refreshTimer: null,
+            countdownTimer: null,
+            countdownValue: 10,
+            autoRefreshEnabled: true
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial data fetch
+            fetchAllData();
+            
+            // Set up auto-refresh
+            startAutoRefresh();
+            
+            // Set up button handlers
+            document.getElementById('refreshButton').addEventListener('click', function() {
+                logToDebug('Manual refresh triggered');
+                fetchAllData();
+            });
+            
+            document.getElementById('clearLogButton').addEventListener('click', function() {
+                document.getElementById('debug-log').textContent = 'Log cleared.';
+            });
+            
+            // Auto-refresh toggle
+            document.getElementById('autoRefreshToggle').addEventListener('change', function(e) {
+                state.autoRefreshEnabled = e.target.checked;
+                
+                if (state.autoRefreshEnabled) {
+                    startAutoRefresh();
+                    logToDebug('Auto-refresh enabled');
+                } else {
+                    stopAutoRefresh();
+                    logToDebug('Auto-refresh disabled');
+                }
+            });
+        });
+
+        // Fetch all JSON data
+        function fetchAllData() {
+            state.lastRefreshTime = new Date();
+            document.getElementById('last-checked').textContent = state.lastRefreshTime.toLocaleTimeString();
+            
+            logToDebug(`Fetching data at ${state.lastRefreshTime.toLocaleTimeString()}`);
+            
+            // Fetch each JSON file
+            fetchJson(config.jsonFiles.totals, 'totals');
+            fetchJson(config.jsonFiles.daily, 'daily');
+            fetchJson(config.jsonFiles.events, 'events');
+        }
+
+        // Fetch a JSON file with cache busting
+        function fetchJson(url, fileType) {
+            // Add cache busting parameter
+            const cacheBuster = `${url.includes('?') ? '&' : '?'}_=${Date.now()}`;
+            const fullUrl = `${url}${cacheBuster}`;
+            
+            // Update status
+            document.getElementById(`${fileType}-status`).innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+            
+            fetch(fullUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Update status
+                    document.getElementById(`${fileType}-status`).innerHTML = '<span class="text-success">✓ Loaded</span>';
+                    
+                    // Process based on file type
+                    processJsonData(data, fileType);
+                })
+                .catch(error => {
+                    console.error(`Error fetching ${fileType}.json:`, error);
+                    document.getElementById(`${fileType}-status`).innerHTML = `<span class="text-danger">✗ Error: ${error.message}</span>`;
+                    document.getElementById(`${fileType}-json`).textContent = `Error: ${error.message}`;
+                    logToDebug(`Error fetching ${fileType}.json: ${error.message}`);
+                });
+        }
+
+        // Process the fetched JSON data
+        function processJsonData(data, fileType) {
+            // Format JSON for display
+            const formattedJson = JSON.stringify(data, null, 2);
+            
+            // Show in appropriate element
+            switch(fileType) {
+                case 'totals':
+                    document.getElementById('totals-json').textContent = formattedJson;
+                    break;
+                    
+                case 'daily':
+                    // Limit display to last 5 entries for brevity
+                    const dailyData = Array.isArray(data) ? data.slice(-5) : data;
+                    document.getElementById('daily-json').textContent = JSON.stringify(dailyData, null, 2) + 
+                        (Array.isArray(data) && data.length > 5 ? `\n\n// ... and ${data.length - 5} more entries` : '');
+                    break;
+                    
+                case 'events':
+                    // Limit display to first 2 entries for brevity
+                    const eventsData = Array.isArray(data) ? data.slice(0, 2) : data;
+                    document.getElementById('events-json').textContent = JSON.stringify(eventsData, null, 2) + 
+                        (Array.isArray(data) && data.length > 2 ? `\n\n// ... and ${data.length - 2} more entries` : '');
+                    break;
+            }
+            
+            logToDebug(`${fileType}.json loaded successfully`);
+        }
+
+        // Auto-refresh functions
+        function startAutoRefresh() {
+            // Clear any existing timers
+            stopAutoRefresh();
+            
+            // Start refresh timer
+            state.refreshTimer = setInterval(fetchAllData, config.refreshInterval);
+            
+            // Start countdown timer
+            state.countdownValue = config.refreshInterval / 1000;
+            updateCountdown();
+            state.countdownTimer = setInterval(updateCountdown, 1000);
+            
+            logToDebug(`Auto-refresh started. Interval: ${config.refreshInterval / 1000}s`);
+        }
+
+        function stopAutoRefresh() {
+            // Clear refresh timer
+            if (state.refreshTimer) {
+                clearInterval(state.refreshTimer);
+                state.refreshTimer = null;
+            }
+            
+            // Clear countdown timer
+            if (state.countdownTimer) {
+                clearInterval(state.countdownTimer);
+                state.countdownTimer = null;
+            }
+        }
+
+        function updateCountdown() {
+            state.countdownValue--;
+            
+            if (state.countdownValue < 0) {
+                state.countdownValue = config.refreshInterval / 1000;
+            }
+            
+            document.getElementById('refresh-countdown').textContent = state.countdownValue;
+        }
+
+        // Logging
+        function logToDebug(message) {
+            const debugLog = document.getElementById('debug-log');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = `[${timestamp}] ${message}`;
+            
+            debugLog.textContent += '\n' + logEntry;
+            
+            // Scroll to bottom
+            debugLog.scrollTop = debugLog.scrollHeight;
+        }
+    </script>
+</body>
+</html>

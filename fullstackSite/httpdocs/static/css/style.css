@@ -1,0 +1,101 @@
+/* Custom CSS for Waste Sorting Analytics Dashboard */
+
+/* Global Styles */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Cards */
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.card-header {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Tables */
+.table th {
+    font-weight: 600;
+}
+
+/* Custom Card Border Colors */
+.card.border-primary {
+    border-left: 4px solid #007bff !important;
+}
+
+.card.border-success {
+    border-left: 4px solid #28a745 !important;
+}
+
+.card.border-info {
+    border-left: 4px solid #17a2b8 !important;
+}
+
+.card.border-warning {
+    border-left: 4px solid #ffc107 !important;
+}
+
+.card.border-danger {
+    border-left: 4px solid #dc3545 !important;
+}
+
+.card.border-secondary {
+    border-left: 4px solid #6c757d !important;
+}
+
+/* Navigation Active Link */
+.nav-link.active {
+    font-weight: bold;
+}
+
+/* Chart Containers */
+canvas {
+    max-width: 100%;
+}
+
+/* Hover Effects */
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Responsive Font Sizes */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Thumbnail Images */
+.img-thumbnail {
+    object-fit: cover;
+}
+
+/* Tables */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+/* Footer */
+.footer {
+    background-color: #f8f9fa;
+    padding: 1rem 0;
+    margin-top: auto;
+}

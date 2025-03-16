@@ -1,0 +1,138 @@
+/* events.json */
+[
+  {
+    "id": "e7f8a9b0-c1d2-3e4f-5a6b-7c8d9e0f1a2b",
+    "timestamp": "2025-03-14T15:23:47.000Z",
+    "formatted_time": "Mar 14, 2025, 3:23 PM",
+    "item_type": "can",
+    "confidence": 0.95,
+    "sort_destination": "recycling",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-14"}
+  },
+  {
+    "id": "b6c7d8e9-f0a1-2b3c-4d5e-6f7a8b9c0d1",
+    "timestamp": "2025-03-14T14:17:22.000Z",
+    "formatted_time": "Mar 14, 2025, 2:17 PM",
+    "item_type": "recycling",
+    "confidence": 0.87,
+    "sort_destination": "recycling",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-14"}
+  },
+  {
+    "id": "a5b6c7d8-e9f0-1a2b-3c4d-5e6f7a8b9c0",
+    "timestamp": "2025-03-14T13:45:10.000Z",
+    "formatted_time": "Mar 14, 2025, 1:45 PM",
+    "item_type": "garbage",
+    "confidence": 0.92,
+    "sort_destination": "garbage",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-14"}
+  },
+  {
+    "id": "9d0e1f2a-3b4c-5d6e-7f8a-9b0c1d2e3f4",
+    "timestamp": "2025-03-14T11:32:05.000Z",
+    "formatted_time": "Mar 14, 2025, 11:32 AM",
+    "item_type": "can",
+    "confidence": 0.91,
+    "sort_destination": "recycling",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-14"}
+  },
+  {
+    "id": "8c9d0e1f-2a3b-4c5d-6e7f-8a9b0c1d2e3",
+    "timestamp": "2025-03-14T10:15:47.000Z",
+    "formatted_time": "Mar 14, 2025, 10:15 AM",
+    "item_type": "recycling",
+    "confidence": 0.78,
+    "sort_destination": "recycling",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-14"}
+  },
+  {
+    "id": "7b8c9d0e-1f2a-3b4c-5d6e-7f8a9b0c1d2",
+    "timestamp": "2025-03-14T09:03:22.000Z",
+    "formatted_time": "Mar 14, 2025, 9:03 AM",
+    "item_type": "garbage",
+    "confidence": 0.85,
+    "sort_destination": "garbage",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-14"}
+  },
+  {
+    "id": "6a7b8c9d-0e1f-2a3b-4c5d-6e7f8a9b0c1",
+    "timestamp": "2025-03-13T16:45:11.000Z",
+    "formatted_time": "Mar 13, 2025, 4:45 PM",
+    "item_type": "can",
+    "confidence": 0.93,
+    "sort_destination": "recycling",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-13"}
+  },
+  {
+    "id": "5f6a7b8c-9d0e-1f2a-3b4c-5d6e7f8a9b0",
+    "timestamp": "2025-03-13T15:27:06.000Z",
+    "formatted_time": "Mar 13, 2025, 3:27 PM",
+    "item_type": "recycling",
+    "confidence": 0.74,
+    "sort_destination": "recycling",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-13"}
+  },
+  {
+    "id": "4e5f6a7b-8c9d-0e1f-2a3b-4c5d6e7f8a9",
+    "timestamp": "2025-03-13T14:10:33.000Z",
+    "formatted_time": "Mar 13, 2025, 2:10 PM",
+    "item_type": "garbage",
+    "confidence": 0.89,
+    "sort_destination": "garbage",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-13"}
+  },
+  {
+    "id": "3d4e5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8",
+    "timestamp": "2025-03-13T11:51:48.000Z",
+    "formatted_time": "Mar 13, 2025, 11:51 AM",
+    "item_type": "can",
+    "confidence": 0.97,
+    "sort_destination": "recycling",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-13"}
+  },
+  {
+    "id": "2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7",
+    "timestamp": "2025-03-13T10:34:29.000Z",
+    "formatted_time": "Mar 13, 2025, 10:34 AM",
+    "item_type": "recycling",
+    "confidence": 0.82,
+    "sort_destination": "recycling",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-13"}
+  },
+  {
+    "id": "1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6",
+    "timestamp": "2025-03-13T09:15:17.000Z",
+    "formatted_time": "Mar 13, 2025, 9:15 AM",
+    "item_type": "garbage",
+    "confidence": 0.76,
+    "sort_destination": "garbage",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-13"}
+  },
+  {
+    "id": "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5",
+    "timestamp": "2025-03-12T16:57:38.000Z",
+    "formatted_time": "Mar 12, 2025, 4:57 PM",
+    "item_type": "can",
+    "confidence": 0.88,
+    "sort_destination": "recycling",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-12"}
+  },
+  {
+    "id": "f9a0b1c2-d3e4-f5a6-b7c8-d9e0f1a2b3c",
+    "timestamp": "2025-03-12T15:38:21.000Z",
+    "formatted_time": "Mar 12, 2025, 3:38 PM",
+    "item_type": "recycling",
+    "confidence": 0.91,
+    "sort_destination": "recycling",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-12"}
+  },
+  {
+    "id": "e8f9a0b1-c2d3-e4f5-a6b7-c8d9e0f1a2b",
+    "timestamp": "2025-03-12T14:23:49.000Z",
+    "formatted_time": "Mar 12, 2025, 2:23 PM",
+    "item_type": "garbage",
+    "confidence": 0.94,
+    "sort_destination": "garbage",
+    "metadata": {"simulation": true, "session_id": "sim-2025-03-12"}
+  }
+]

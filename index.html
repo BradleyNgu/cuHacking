@@ -15,13 +15,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="../index.html">
                 <i class="fas fa-recycle me-2"></i>
                 Waste Sorting Analytics
             </a>
@@ -31,13 +31,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Dashboard</a>
+                        <a class="nav-link active" href="../index.html">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/events">Sorting Events</a>
+                        <a class="nav-link" href="templates/events.html">Sorting Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/stats">Statistics</a>
+                        <a class="nav-link" href="templates/stats.html">Statistics</a>
                     </li>
                 </ul>
             </div>
@@ -148,7 +148,7 @@
                 <div class="card">
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
                         <h5 class="card-title mb-0">Recent Sorting Events</h5>
-                        <a href="/events" class="btn btn-sm btn-outline-primary">View All</a>
+                        <a href="templates/events.html" class="btn btn-sm btn-outline-primary">View All</a>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -188,6 +188,9 @@
     
     <!-- Custom JS -->
     <script>
+        // API base URL - change this to your API server if different
+        const API_BASE_URL = '../static/api';
+        
         // Fetch data when the page loads
         document.addEventListener('DOMContentLoaded', function() {
             fetchDashboardData();
@@ -195,8 +198,8 @@
         
         // Main function to fetch all dashboard data
         function fetchDashboardData() {
-            // Fetch total statistics
-            fetch('/api/stats/totals')
+            // Fetch from JSON files instead of API endpoints
+            fetch(`${API_BASE_URL}/totals.json`)
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('total-sorted').textContent = data.grand_total || 0;
@@ -212,23 +215,102 @@
                     // Update distribution chart
                     updateDistributionChart(data);
                 })
-                .catch(error => console.error('Error fetching total stats:', error));
+                .catch(error => {
+                    console.error('Error fetching total stats:', error);
+                    // Load sample data if API fails
+                    loadSampleData();
+                });
             
             // Fetch daily statistics for chart
-            fetch('/api/stats/daily?days=30')
+            fetch(`${API_BASE_URL}/daily.json`)
                 .then(response => response.json())
                 .then(data => {
                     updateDailyChart(data);
                 })
-                .catch(error => console.error('Error fetching daily stats:', error));
+                .catch(error => {
+                    console.error('Error fetching daily stats:', error);
+                    // Load sample data for chart if API fails
+                    loadSampleChartData();
+                });
             
             // Fetch recent events
-            fetch('/api/events/recent?limit=5')
+            fetch(`${API_BASE_URL}/events.json`)
                 .then(response => response.json())
                 .then(data => {
                     updateRecentEvents(data);
                 })
-                .catch(error => console.error('Error fetching recent events:', error));
+                .catch(error => {
+                    console.error('Error fetching recent events:', error);
+                    // Load sample events if API fails
+                    loadSampleEvents();
+                });
+        }
+        
+        // Load sample data if API fails
+        function loadSampleData() {
+            const sampleData = {
+                total_cans: 246,
+                total_recycling: 183,
+                total_garbage: 129,
+                grand_total: 558
+            };
+            
+            document.getElementById('total-sorted').textContent = sampleData.grand_total;
+            document.getElementById('cans-collected').textContent = sampleData.total_cans;
+            document.getElementById('garbage-items').textContent = sampleData.total_garbage;
+            
+            // Calculate recycling rate
+            const totalRecycling = sampleData.total_cans + sampleData.total_recycling;
+            const recyclingRate = (totalRecycling / sampleData.grand_total * 100).toFixed(1);
+            document.getElementById('recycling-rate').textContent = recyclingRate + '%';
+            
+            // Update distribution chart
+            updateDistributionChart(sampleData);
+        }
+        
+        // Load sample chart data
+        function loadSampleChartData() {
+            const today = new Date();
+            const sampleChartData = [];
+            
+            // Generate 30 days of sample data
+            for (let i = 29; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toISOString().split('T')[0];
+                
+                sampleChartData.push({
+                    date: dateStr,
+                    can_count: Math.floor(Math.random() * 10) + 1,
+                    recycling_count: Math.floor(Math.random() * 8) + 1,
+                    garbage_count: Math.floor(Math.random() * 6) + 1
+                });
+            }
+            
+            updateDailyChart(sampleChartData);
+        }
+        
+        // Load sample events
+        function loadSampleEvents() {
+            const sampleEvents = [];
+            const itemTypes = ['can', 'recycling', 'garbage'];
+            const destinations = ['recycling', 'recycling', 'garbage'];
+            
+            // Generate 5 sample events
+            for (let i = 0; i < 5; i++) {
+                const typeIndex = Math.floor(Math.random() * 3);
+                
+                sampleEvents.push({
+                    id: `sample-${i}`,
+                    timestamp: new Date(Date.now() - i * 3600000).toISOString(),
+                    item_type: itemTypes[typeIndex],
+                    confidence: Math.random() * 0.3 + 0.7,
+                    sort_destination: destinations[typeIndex],
+                    formatted_time: new Date(Date.now() - i * 3600000).toLocaleString()
+                });
+            }
+            
+            updateRecentEvents(sampleEvents);
         }
         
         // Update distribution chart
@@ -278,7 +360,10 @@
             const ctx = document.getElementById('daily-chart').getContext('2d');
             
             // Prepare data for the chart
-            const dates = data.map(item => item.date);
+            const dates = data.map(item => {
+                const date = new Date(item.date);
+                return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            });
             const canData = data.map(item => item.can_count || 0);
             const recyclingData = data.map(item => item.recycling_count || 0);
             const garbageData = data.map(item => item.garbage_count || 0);

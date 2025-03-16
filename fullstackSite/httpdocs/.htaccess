@@ -1,0 +1,42 @@
+# .htaccess - Configuration for Waste Sorting Dashboard
+
+# Set correct MIME types
+<IfModule mod_mime.c>
+    # JSON Files
+    AddType application/json .json
+</IfModule>
+
+# Disable caching for JSON files
+<IfModule mod_headers.c>
+    # JSON files - NO CACHE to ensure fresh data
+    <FilesMatch "\.(json)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+</IfModule>
+
+# Prevent direct access to sensitive files
+<FilesMatch "(^\.htaccess|\.log|\.sqlite|\.db)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Protect the data and logs directories
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^data/ - [F,L]
+    RewriteRule ^logs/ - [F,L]
+</IfModule>
+
+# Enable CORS (Cross-Origin Resource Sharing) if needed
+<IfModule mod_headers.c>
+    # Allow JSON files to be requested from other domains
+    <FilesMatch "\.(json)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
+# Custom Error Pages
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html

@@ -1,0 +1,7 @@
+/* totals.json */
+{
+  "total_cans": 300,
+  "total_recycling": 183,
+  "total_garbage": 129,
+  "grand_total": 301
+}

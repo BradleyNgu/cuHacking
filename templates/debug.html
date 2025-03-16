@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Waste Sorting Analytics</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <style>
+        .debug-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+        }
+        .debug-info {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background-color: #f8f9fa;
+            border-radius: 0.25rem;
+        }
+        pre {
+            margin-bottom: 0;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-recycle me-2"></i>
+                Waste Sorting Analytics
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/events">Sorting Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stats">Statistics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/debug">Debug</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container py-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="display-5 mb-4">
+                    <i class="fas fa-bug me-2"></i>
+                    Debug Information
+                </h1>
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    This page is for debugging purposes only.
+                </div>
+            </div>
+        </div>
+
+        <!-- Database Info -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Database Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="debug-section">
+                            <h6 class="mb-3">Database Status</h6>
+                            <div class="debug-info">
+                                <p><strong>Path:</strong> {{ data.database_path }}</p>
+                                <p><strong>Exists:</strong> {{ data.database_exists }}</p>
+                                <p><strong>Size:</strong> {{ data.database_size }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="debug-section">
+                            <h6 class="mb-3">Table Statistics</h6>
+                            <div class="debug-info">
+                                <p><strong>sort_events count:</strong> {{ data.event_count }}</p>
+                                <p><strong>images count:</strong> {{ data.image_count }}</p>
+                                <p><strong>statistics count:</strong> {{ data.statistics_count }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Data -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Sample Data</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Events -->
+                        <div class="debug-section">
+                            <h6 class="mb-3">Recent Events</h6>
+                            {% if data.events|length > 0 %}
+                                {% for event in data.events %}
+                                <div class="debug-info">
+                                    <pre>{{ event|tojson(indent=2) }}</pre>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="debug-info">No events found</div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Statistics -->
+                        <div class="debug-section">
+                            <h6 class="mb-3">Daily Statistics</h6>
+                            {% if data.daily_stats|length > 0 %}
+                                {% for stat in data.daily_stats %}
+                                <div class="debug-info">
+                                    <pre>{{ stat|tojson(indent=2) }}</pre>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="debug-info">No statistics found</div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Totals -->
+                        <div class="debug-section">
+                            <h6 class="mb-3">Total Statistics</h6>
+                            <div class="debug-info">
+                                <pre>{{ data.totals|tojson(indent=2) }}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Endpoints -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">API Endpoints</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>GET /api/events/recent</strong>
+                                <p class="mb-0 text-muted">Retrieve recent sorting events</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>GET /api/events/&lt;event_id&gt;</strong>
+                                <p class="mb-0 text-muted">Retrieve details for a specific event</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>GET /api/thumbnail/&lt;image_id&gt;</strong>
+                                <p class="mb-0 text-muted">Retrieve thumbnail image</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>GET /api/stats/daily</strong>
+                                <p class="mb-0 text-muted">Retrieve daily statistics</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>GET /api/stats/totals</strong>
+                                <p class="mb-0 text-muted">Retrieve total statistics</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>GET /api/export/csv</strong>
+                                <p class="mb-0 text-muted">Export statistics as CSV</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Templates -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Page Templates</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>GET /</strong>
+                                <p class="mb-0 text-muted">Dashboard overview</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>GET /events</strong>
+                                <p class="mb-0 text-muted">Sorting events page</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>GET /stats</strong>
+                                <p class="mb-0 text-muted">Statistics page</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>GET /debug</strong>
+                                <p class="mb-0 text-muted">Debug page (this page)</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-light py-3 mt-auto">
+        <div class="container text-center">
+            <span class="text-muted">
+                Waste Sorting Analytics Dashboard &copy; 2025
+            </span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
