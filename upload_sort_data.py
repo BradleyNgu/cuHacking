@@ -8,22 +8,25 @@ import sqlite3
 from datetime import datetime, timedelta
 import logging
 import argparse
-import uuid
+import sys
 
 # Configure logging
+log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs")
+os.makedirs(log_dir, exist_ok=True)
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler("upload.log"),
+        logging.FileHandler(os.path.join(log_dir, "upload.log")),
         logging.StreamHandler()
     ]
 )
 logger = logging.getLogger("DataUploader")
 
 # Default paths and settings
-DEFAULT_DB_PATH = './data/sorting_data.db'
-DEFAULT_CONFIG_PATH = './upload_config.json'
+DEFAULT_DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'sorting_data.db')
+DEFAULT_CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'upload_config.json')
 DEFAULT_SERVER_URL = 'http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php'
 API_KEY = 'ws_6f28a91e7d3c4b5f8a2e9d0c7b6a5f4'  # This must match the key in upload_data.php
 
@@ -44,10 +47,10 @@ def load_config():
     config = {
         'server_url': DEFAULT_SERVER_URL,
         'api_key': API_KEY,
-        'upload_interval_minutes': 15,
+        'upload_interval_minutes': 5,  # Changed to 5 minutes for more frequent updates
         'max_events_per_upload': 100,
         'retry_attempts': 3,
-        'retry_delay_seconds': 30,
+        'retry_delay_seconds': 5,  # Shorter delay for faster retry
         'last_upload_time': datetime.now().isoformat()
     }
     
@@ -76,12 +79,17 @@ def save_config(config):
 def get_new_events(db_path, last_upload_time, max_events=100):
     """Get new events from database since last upload"""
     try:
+        # Check if database exists
+        if not os.path.exists(db_path):
+            logger.error(f"Database file not found: {db_path}")
+            return [], last_upload_time
+            
         conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         
         # Get events newer than last upload time
-        cursor.execute("""
+        query = """
             SELECT 
                 id, timestamp, item_type, confidence, sort_destination, 
                 image_id, user_id, metadata
@@ -89,7 +97,10 @@ def get_new_events(db_path, last_upload_time, max_events=100):
             WHERE timestamp > ? 
             ORDER BY timestamp ASC 
             LIMIT ?
-        """, (last_upload_time, max_events))
+        """
+        
+        logger.info(f"Querying events newer than {last_upload_time}")
+        cursor.execute(query, (last_upload_time, max_events))
         
         rows = cursor.fetchall()
         events = []
@@ -109,8 +120,10 @@ def get_new_events(db_path, last_upload_time, max_events=100):
         # Get the most recent timestamp
         if events:
             most_recent = events[-1]['timestamp']
+            logger.info(f"Most recent event timestamp: {most_recent}")
         else:
             most_recent = last_upload_time
+            logger.info("No new events found")
             
         conn.close()
         logger.info(f"Found {len(events)} new events since {last_upload_time}")
@@ -123,6 +136,11 @@ def get_new_events(db_path, last_upload_time, max_events=100):
 def get_daily_statistics(db_path):
     """Get all daily statistics"""
     try:
+        # Check if database exists
+        if not os.path.exists(db_path):
+            logger.error(f"Database file not found: {db_path}")
+            return []
+            
         conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
@@ -173,13 +191,15 @@ def upload_data(server_url, api_key, events, stats):
             'User-Agent': 'WasteSorter/1.0'
         }
         
+        # Log upload attempt
+        logger.info(f"Uploading to {server_url}: {len(events)} events, {len(stats)} stats")
+        
         # Send request
-        logger.info(f"Sending data to {server_url}: {len(events)} events, {len(stats)} stats")
         response = requests.post(
             server_url,
             json=payload,
             headers=headers,
-            timeout=60  # Increased timeout for slow connections
+            timeout=30  # 30 second timeout
         )
         
         # Check response
@@ -221,7 +241,7 @@ def run_upload(db_path, force=False):
     max_events = config.get('max_events_per_upload', 100)
     last_upload_time = config.get('last_upload_time', (datetime.now() - timedelta(days=30)).isoformat())
     retry_attempts = config.get('retry_attempts', 3)
-    retry_delay = config.get('retry_delay_seconds', 30)
+    retry_delay = config.get('retry_delay_seconds', 5)
     
     logger.info(f"Starting upload (last upload: {last_upload_time})")
     
@@ -259,7 +279,7 @@ def run_upload(db_path, force=False):
 def run_daemon_mode(db_path):
     """Run in daemon mode, uploading data periodically"""
     config = load_config()
-    interval_minutes = config.get('upload_interval_minutes', 15)
+    interval_minutes = config.get('upload_interval_minutes', 5)
     interval_seconds = interval_minutes * 60
     
     logger.info(f"Starting daemon mode (interval: {interval_minutes} minutes)")
@@ -292,11 +312,22 @@ def main():
     
     args = parser.parse_args()
     
+    # Check if database exists
+    if not os.path.exists(args.db):
+        logger.error(f"Database file not found: {args.db}")
+        logger.info(f"Expected database at: {os.path.abspath(args.db)}")
+        return 1
+    
     # Run in daemon mode or single upload
-    if args.daemon:
-        run_daemon_mode(args.db)
-    else:
-        run_upload(args.db, args.force)
+    try:
+        if args.daemon:
+            run_daemon_mode(args.db)
+        else:
+            success = run_upload(args.db, args.force)
+            return 0 if success else 1
+    except Exception as e:
+        logger.error(f"Unhandled error: {e}")
+        return 1
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

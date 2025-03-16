@@ -3,15 +3,14 @@
  * upload_data.php - Waste Sorting Data Receiver
  * 
  * This script receives sort events and statistics from the waste sorting computer
- * and updates both the database and the static JSON files used by the website.
+ * and updates the database.
  */
 
 // Configuration - DO NOT CHANGE THE API KEY HERE, IT MUST MATCH YOUR PYTHON SCRIPT
 $config = [
     'api_key' => 'ws_6f28a91e7d3c4b5f8a2e9d0c7b6a5f4', // Pre-configured secure key
     'db_path' => './data/sorting_data.db',
-    'log_path' => './logs/upload.log',
-    'json_dir' => './static/api' // This is the path where JSON files are stored
+    'log_path' => './logs/upload.log'
 ];
 
 // Enable error reporting but don't display errors
@@ -53,15 +52,9 @@ function process_data($data) {
             }
         }
         
-        if (!is_dir($config['json_dir'])) {
-            if (!mkdir($config['json_dir'], 0755, true)) {
-                throw new Exception("Failed to create JSON directory: " . $config['json_dir']);
-            }
-        }
-        
         // Connect to database
         $db = new SQLite3($config['db_path']);
-        $db->busyTimeout(5000); // Set busy timeout to 5 seconds
+        $db->busyTimeout(5000); // Set busy timeout for busy database
         $db->exec('PRAGMA journal_mode = WAL;');
         
         // Create tables if they don't exist
@@ -85,9 +78,6 @@ function process_data($data) {
         // Commit transaction
         $db->exec('COMMIT');
         
-        // Generate JSON files
-        $json_generated = generate_json_files($db);
-        
         // Close database
         $db->close();
         
@@ -96,8 +86,7 @@ function process_data($data) {
         
         return [
             'success' => true,
-            'message' => "Processed $events_processed events and $stats_processed statistics records",
-            'json_generated' => $json_generated
+            'message' => "Processed $events_processed events and $stats_processed statistics records"
         ];
     } catch (Exception $e) {
         // Try to rollback transaction if there was an error
@@ -136,6 +125,17 @@ function create_tables($db) {
         )
     ');
     
+    // Images table (for thumbnails, if available)
+    $db->exec('
+        CREATE TABLE IF NOT EXISTS images (
+            id TEXT PRIMARY KEY,
+            timestamp TEXT NOT NULL,
+            image_data BLOB NOT NULL,
+            thumbnail BLOB,
+            metadata TEXT
+        )
+    ');
+    
     // Statistics table
     $db->exec('
         CREATE TABLE IF NOT EXISTS statistics (
@@ -159,6 +159,8 @@ function process_events($db, $events) {
         (id, timestamp, item_type, confidence, sort_destination, image_id, user_id, metadata) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     ');
+    
+    $image_stmt = null;
     
     $count = 0;
     foreach ($events as $event) {
@@ -187,6 +189,31 @@ function process_events($db, $events) {
         $result = $stmt->execute();
         if ($result) {
             $count++;
+            
+            // Process image data if included
+            if ($image_id && isset($event['image_data'])) {
+                if ($image_stmt === null) {
+                    $image_stmt = $db->prepare('
+                        INSERT OR REPLACE INTO images 
+                        (id, timestamp, image_data, thumbnail, metadata) 
+                        VALUES (?, ?, ?, ?, ?)
+                    ');
+                }
+                
+                $image_stmt->bindValue(1, $image_id, SQLITE3_TEXT);
+                $image_stmt->bindValue(2, $event['timestamp'], SQLITE3_TEXT);
+                $image_stmt->bindValue(3, $event['image_data'], SQLITE3_BLOB);
+                
+                // Thumbnail is optional
+                $thumbnail = isset($event['thumbnail']) ? $event['thumbnail'] : null;
+                $image_stmt->bindValue(4, $thumbnail, SQLITE3_BLOB);
+                
+                // Image metadata is optional
+                $img_metadata = isset($event['image_metadata']) ? json_encode($event['image_metadata']) : null;
+                $image_stmt->bindValue(5, $img_metadata, SQLITE3_TEXT);
+                
+                $image_stmt->execute();
+            }
         }
         $stmt->reset();
     }
@@ -211,7 +238,8 @@ function process_stats($db, $stats) {
         $can_count = isset($stat['can_count']) ? intval($stat['can_count']) : 0;
         $recycling_count = isset($stat['recycling_count']) ? intval($stat['recycling_count']) : 0;
         $garbage_count = isset($stat['garbage_count']) ? intval($stat['garbage_count']) : 0;
-        $total_count = $can_count + $recycling_count + $garbage_count;
+        $total_count = isset($stat['total_count']) ? intval($stat['total_count']) : 
+                       ($can_count + $recycling_count + $garbage_count);
         
         // Metadata is optional
         $metadata = isset($stat['metadata']) ? json_encode($stat['metadata']) : null;
@@ -231,100 +259,6 @@ function process_stats($db, $stats) {
     }
     
     return $count;
-}
-
-// Generate JSON files for the static website
-function generate_json_files($db) {
-    global $config;
-    
-    try {
-        // Make sure directory is writable
-        if (!is_writable($config['json_dir'])) {
-            throw new Exception("JSON directory is not writable: " . $config['json_dir']);
-        }
-        
-        // Generate totals.json
-        $totals = [];
-        $result = $db->query('
-            SELECT 
-                COALESCE(SUM(can_count), 0) as total_cans,
-                COALESCE(SUM(recycling_count), 0) as total_recycling,
-                COALESCE(SUM(garbage_count), 0) as total_garbage,
-                COALESCE(SUM(total_count), 0) as grand_total 
-            FROM statistics
-        ');
-        
-        if ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-            $totals = $row;
-        }
-        
-        // Default values in case of empty database
-        if (!isset($totals['total_cans'])) $totals['total_cans'] = 0;
-        if (!isset($totals['total_recycling'])) $totals['total_recycling'] = 0;
-        if (!isset($totals['total_garbage'])) $totals['total_garbage'] = 0;
-        if (!isset($totals['grand_total'])) $totals['grand_total'] = 0;
-        
-        // Write totals.json
-        $totals_file = $config['json_dir'] . '/totals.json';
-        if (file_put_contents($totals_file, json_encode($totals, JSON_PRETTY_PRINT)) === false) {
-            throw new Exception("Failed to write totals.json");
-        }
-        
-        // Generate daily.json
-        $daily = [];
-        $result = $db->query('SELECT * FROM statistics ORDER BY date ASC');
-        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-            // Parse metadata if it exists
-            if (isset($row['metadata']) && $row['metadata']) {
-                $row['metadata'] = json_decode($row['metadata'], true);
-            }
-            $daily[] = $row;
-        }
-        
-        // Write daily.json
-        $daily_file = $config['json_dir'] . '/daily.json';
-        if (file_put_contents($daily_file, json_encode($daily, JSON_PRETTY_PRINT)) === false) {
-            throw new Exception("Failed to write daily.json");
-        }
-        
-        // Generate events.json
-        $events = [];
-        $result = $db->query('
-            SELECT id, timestamp, item_type, confidence, sort_destination, image_id, user_id, metadata 
-            FROM sort_events 
-            ORDER BY timestamp DESC 
-            LIMIT 100
-        ');
-        
-        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-            // Format timestamp for display
-            $timestamp = $row['timestamp'];
-            $date = new DateTime($timestamp);
-            $row['formatted_time'] = $date->format('M j, Y, g:i A');
-            
-            // Parse metadata if it's a JSON string
-            if (isset($row['metadata']) && is_string($row['metadata'])) {
-                $metadata = json_decode($row['metadata'], true);
-                if ($metadata !== null) {
-                    $row['metadata'] = $metadata;
-                }
-            }
-            
-            $events[] = $row;
-        }
-        
-        // Write events.json
-        $events_file = $config['json_dir'] . '/events.json';
-        if (file_put_contents($events_file, json_encode($events, JSON_PRETTY_PRINT)) === false) {
-            throw new Exception("Failed to write events.json");
-        }
-        
-        log_message("Generated JSON files successfully");
-        return true;
-    } catch (Exception $e) {
-        log_message("Error generating JSON files: " . $e->getMessage(), 'ERROR');
-        return false;
-    }
 }
 
 // Main execution
