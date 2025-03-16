@@ -55,8 +55,11 @@ class WasteSorterApp:
         self.is_connected = False
         self.is_sorting = False
         self.current_frame = None
-        self.current_classification = "Unknown"
         self.confidence = 0.0
+
+        self.last_high_confidence_time = None  # Store the time when confidence is ≥90%
+        self.current_classification = None  # Store the current classification
+        self.min_confidence_time = 4  # Seconds to maintain confidence before sorting
         
         # Item counters
         self.can_count = 0
@@ -221,23 +224,23 @@ class WasteSorterApp:
         
         # Platform calibration
         calib_frame = ttk.LabelFrame(control_frame, text="Platform Calibration", padding="10")
-        calib_frame.pack(fill=tk.X, pady=10)
+        #calib_frame.pack(fill=tk.X, pady=10)
         
         # Slider for position
-        ttk.Label(calib_frame, text="Platform Angle:").pack(anchor="w")
+        #ttk.Label(calib_frame, text="Platform Angle:").pack(anchor="w")
         
-        self.position_var = tk.IntVar(value=90)
-        self.position_slider = ttk.Scale(calib_frame, from_=0, to=180, 
-                                       variable=self.position_var, 
-                                       command=self.update_platform_position)
-        self.position_slider.pack(fill=tk.X, pady=5)
+        #self.position_var = tk.IntVar(value=90)
+        #self.position_slider = ttk.Scale(calib_frame, from_=0, to=180, 
+        #                               variable=self.position_var, 
+        #                               command=self.update_platform_position)
+        #self.position_slider.pack(fill=tk.X, pady=5)
         
         # Position display and buttons
-        pos_frame = ttk.Frame(calib_frame)
-        pos_frame.pack(fill=tk.X)
+        #pos_frame = ttk.Frame(calib_frame)
+        #pos_frame.pack(fill=tk.X)
         
-        self.position_label = ttk.Label(pos_frame, text="90°")
-        self.position_label.pack(side=tk.LEFT, padx=5)
+        #self.position_label = ttk.Label(pos_frame, text="90°")
+        #self.position_label.pack(side=tk.LEFT, padx=5)
         
         # Preset buttons
         preset_frame = ttk.Frame(calib_frame)
@@ -596,57 +599,40 @@ class WasteSorterApp:
         try:
             # Analyze the current frame
             processed_img = self.preprocess_image(self.current_frame)
+            predictions = self.model.predict(processed_img)
+            predicted_class = np.argmax(predictions[0])
+            confidence = float(predictions[0][predicted_class])
             
-            # Check if we're using a custom model or the pretrained one
-            if hasattr(self, 'class_mapping'):
-                # Using custom model
-                predictions = self.model.predict(processed_img)
-                predicted_class = np.argmax(predictions[0])
-                confidence = float(predictions[0][predicted_class])
-                
-                # Get class name from mapping
-                class_name = self.class_mapping.get(str(predicted_class), f"Class {predicted_class}")
-                
-                if "can" in class_name.lower():
-                    sort_as = "Can"
-                elif "recycling" in class_name.lower():
-                    sort_as = "Recycling"
+            # Get class name from mapping
+            class_name = self.class_mapping.get(str(predicted_class), f"Class {predicted_class}")
+            sort_as = "Can" if "can" in class_name.lower() else "Recycling" if "recycling" in class_name.lower() else "Garbage"
+
+            # If confidence is ≥ 85% and classification is stable, track time
+            if confidence >= 0.85:
+                if self.current_classification == sort_as:
+                    # Classification is the same as last time, check if 5 seconds have passed
+                    if self.last_high_confidence_time and (time.time() - self.last_high_confidence_time >= self.min_confidence_time):
+                        print(f"Read {predicted_class} for {self.min_confidence_time} seconds")
+                        if not self.is_sorting:  # Only sort once per item
+                            self.sort_item_with_classification(sort_as)
+                            self.is_sorting = True  # Prevent repeated sorting
                 else:
-                    sort_as = "Garbage"
+                    # New classification detected, reset timer
+                    self.current_classification = sort_as
+                    self.last_high_confidence_time = time.time()
+                    self.is_sorting = False  # Allow sorting for a new item
             else:
-                # Using pretrained model
-                predictions = self.model.predict(processed_img)
-                predicted_class = np.argmax(predictions[0])
-                confidence = float(predictions[0][predicted_class])
-                
-                # Determine if can, recyclable, or garbage based on ImageNet classes
-                can_classes = [482, 483, 810]  # Can related classes
-                recyclable_classes = [494, 440, 672, 802, 965, 611]  # Recyclable classes
-                
-                if predicted_class in can_classes:
-                    sort_as = "Can"
-                elif predicted_class in recyclable_classes:
-                    sort_as = "Recycling"
-                else:
-                    sort_as = "Garbage"
-            
-            # Only auto-sort if confidence is high
-            if confidence > 0.7:  # 70% confidence threshold
-                # Update UI
-                self.class_label.configure(text=f"Class: {predicted_class}")
-                self.conf_label.configure(text=f"{confidence:.2%}")
-                self.sort_label.configure(text=sort_as)
-                
-                # Record the classification
-                self.current_classification = sort_as
-                self.confidence = confidence
-                
-                # Sort the item
-                self.sort_item_with_classification(sort_as)
-                
-                # Update status
-                self.status_var.set(f"Auto-sort: {sort_as} ({confidence:.2%} confidence)")
-        
+                # Confidence dropped below threshold, reset timer
+                self.last_high_confidence_time = None
+                self.current_classification = None
+                self.is_sorting = False  # Reset sorting flag
+
+            # Update UI
+            self.class_label.configure(text=f"Class: {predicted_class}")
+            self.conf_label.configure(text=f"{confidence:.2%}")
+            self.sort_label.configure(text=sort_as)
+            self.confidence = confidence
+
         except Exception as e:
             logger.error(f"Auto-sort error: {str(e)}")
     
@@ -958,16 +944,23 @@ class WasteSorterApp:
                 import json
                 with open(counts_file, "r") as f:
                     counts_data = json.load(f)
-                
-                self.can_count = counts_data.get("cans", 0)
-                self.recycling_count = counts_data.get("recycling", 0)
-                self.garbage_count = counts_data.get("garbage", 0)
-                self.total_count = counts_data.get("total", 0)
+                last_updated = counts_data.get("last_updated", None)
+                today = datetime.now().strftime("%Y-%m-%d")
+
+                if last_updated and last_updated[:10] != today:
+                    self.can_count = 0
+                    self.recycling_count = 0 
+                    self.garbage_count = 0
+                    self.total_count = 0
+                    self.save_counts()
+                else:
+                    self.can_count = counts_data.get("cans", 0)
+                    self.recycling_count = counts_data.get("recycling", 0)
+                    self.garbage_count = counts_data.get("garbage", 0)
+                    self.total_count = counts_data.get("total", 0)
                 
                 # Update UI
                 self.update_counter_display()
-                
-                logger.info(f"Loaded counts from {counts_file}")
         
         except Exception as e:
             logger.error(f"Error loading counts: {str(e)}")

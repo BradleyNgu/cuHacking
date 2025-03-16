@@ -1,0 +1,766 @@
+2025-03-15 16:12:20,525 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 16:12:20,530 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 16:12:20,531 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'garbage', '2': 'recycling'}
+2025-03-15 16:19:16,224 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 16:19:16,230 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 16:19:16,230 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'garbage', '2': 'recycling'}
+2025-03-15 16:35:01,229 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 16:35:01,231 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
+2025-03-15 16:45:41,074 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 16:45:41,079 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 16:45:41,080 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'garbage', '2': 'recycling'}
+2025-03-15 16:45:41,080 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 16:46:00,792 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 16:46:00,793 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
+2025-03-15 16:51:38,719 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 16:51:38,725 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 16:51:38,726 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'garbage', '2': 'recycling'}
+2025-03-15 16:51:38,726 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 16:54:37,930 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 16:54:37,936 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 16:54:37,936 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'garbage', '2': 'recycling'}
+2025-03-15 16:54:37,937 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 16:55:20,442 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 16:55:20,445 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
+2025-03-15 16:55:31,197 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 16:55:31,198 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
+2025-03-15 17:14:14,156 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 17:14:14,161 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 17:14:14,161 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'cans', '2': 'garbage', '3': 'recycling'}
+2025-03-15 17:14:14,162 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 17:14:21,975 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 17:14:21,976 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
+2025-03-15 17:15:08,196 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 17:15:08,197 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
+2025-03-15 17:18:53,001 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 17:18:53,007 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 17:18:53,007 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'cans', '2': 'garbage', '3': 'recycling'}
+2025-03-15 17:18:53,007 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 17:22:05,558 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 17:22:05,563 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 17:22:05,564 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'cans', '2': 'garbage', '3': 'recycling'}
+2025-03-15 17:22:05,564 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 17:26:41,819 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 17:26:41,825 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 17:26:41,825 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'cans', '2': 'garbage', '3': 'recycling'}
+2025-03-15 17:26:41,825 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 17:29:22,911 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 17:29:22,916 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 17:29:22,917 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'cans', '2': 'garbage', '3': 'recycling'}
+2025-03-15 17:29:22,917 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 17:29:33,724 - WasteSorter - ERROR - Connection error: Arduino not responding or wrong firmware. Got: 
+2025-03-15 17:29:41,233 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 17:29:41,234 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
+2025-03-15 17:35:02,804 - WasteSorter - ERROR - Camera error: can't invoke "image" command: application has been destroyed
+2025-03-15 17:36:06,417 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 17:36:06,423 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 17:36:06,423 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'cans', '2': 'garbage', '3': 'recycling'}
+2025-03-15 17:36:06,424 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 17:38:26,436 - WasteSorter - ERROR - Connection error: Arduino not responding or wrong firmware. Got: 
+2025-03-15 17:38:34,990 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 17:38:34,991 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
+2025-03-15 17:59:27,399 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 17:59:27,405 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 17:59:27,405 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'cans', '2': 'garbage', '3': 'recycling'}
+2025-03-15 17:59:27,406 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 17:59:35,462 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 17:59:35,463 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
+2025-03-15 18:17:31,622 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 18:17:31,627 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 18:17:31,628 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'cans', '2': 'garbage', '3': 'recycling'}
+2025-03-15 18:17:31,628 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 18:17:38,717 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 18:17:38,718 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
+2025-03-15 18:56:41,373 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:41,485 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:41,588 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:41,697 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:41,804 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:41,908 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:42,014 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:42,121 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:42,228 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:42,339 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:42,448 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:42,558 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:42,668 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:42,770 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:42,881 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:42,992 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:43,103 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:43,214 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:43,315 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:43,421 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:43,531 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:43,634 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:43,735 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:43,845 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:43,956 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:44,060 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:44,170 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:44,277 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:44,382 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:44,492 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:44,599 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:44,707 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:44,809 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:44,918 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:45,028 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:45,137 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:45,243 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:45,351 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:45,452 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:45,563 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:45,670 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:45,773 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:45,884 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:45,988 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:46,098 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:46,202 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:46,303 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:46,413 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:46,524 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:46,628 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:46,731 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:46,837 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:46,947 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:47,058 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:47,162 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:47,269 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:47,377 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:47,485 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:47,596 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:47,701 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:47,802 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:47,903 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:48,004 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:48,107 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:48,218 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:48,326 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:48,434 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:48,535 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:48,646 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:48,757 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:48,867 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:48,970 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:49,081 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:49,185 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:49,296 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:49,400 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:49,502 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:49,607 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:49,715 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:49,817 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:49,926 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:50,035 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:50,146 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:50,253 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:50,359 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:50,470 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:50,581 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:50,683 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:50,790 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:50,900 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:56:51,002 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:07,232 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:07,343 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:07,449 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:07,557 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:07,678 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:07,783 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:07,887 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:07,993 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:08,098 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:08,201 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:08,306 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:08,409 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:08,514 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:08,619 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:08,725 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:08,827 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:08,933 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:09,054 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:09,201 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:09,306 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:09,408 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:09,513 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:09,614 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:09,718 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:09,823 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:09,925 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:10,031 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:10,134 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:10,238 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:10,344 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:10,447 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:10,551 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:10,656 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:10,761 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:10,863 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:10,968 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:11,071 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:11,176 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:11,279 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:11,384 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:11,490 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:11,593 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:11,694 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:11,796 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:11,900 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:12,004 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:12,109 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:12,213 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:12,318 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:12,424 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:12,529 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:12,634 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:12,739 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:12,845 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:12,951 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:13,057 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:13,162 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:13,265 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:13,367 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:13,473 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:13,579 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:13,684 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:13,790 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:13,892 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:13,993 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:14,099 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:14,201 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:14,307 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:14,412 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:14,516 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:14,619 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:14,724 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:14,830 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:14,933 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:15,035 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:15,140 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:15,246 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:15,352 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:15,456 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:15,560 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:15,661 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:15,762 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:15,864 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:15,970 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:16,072 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:16,178 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:16,282 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:16,386 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:16,488 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:16,589 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:16,694 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:16,797 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:16,900 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:17,006 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:17,112 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:17,215 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:17,321 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:17,426 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:17,528 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:17,629 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:17,730 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:17,836 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:17,942 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:18,047 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:18,153 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:18,258 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:18,363 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:18,468 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:18,574 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:18,680 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:18,782 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:18,887 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:18,993 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:19,095 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:19,201 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:19,303 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:19,404 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:19,506 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:19,612 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:19,716 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:19,819 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:19,924 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:20,030 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:20,133 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:20,237 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:20,341 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:20,446 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:20,551 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:20,656 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:20,762 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:20,867 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:20,973 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:21,079 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:21,185 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:21,290 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:21,393 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:21,496 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:21,601 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:21,704 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:21,806 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:21,910 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:22,016 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:22,117 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:22,221 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:22,326 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:22,432 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:22,534 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:22,638 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:22,742 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:22,848 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:22,952 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:23,058 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:23,164 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:23,268 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:23,373 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:23,478 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:23,584 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:23,690 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:23,794 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:23,900 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:24,006 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:24,111 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:24,215 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:24,318 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:24,422 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:24,527 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:24,628 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:24,733 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:24,834 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:24,940 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:25,045 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:25,149 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:25,253 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:25,359 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:25,464 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:25,568 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:25,674 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:25,775 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:25,881 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:25,984 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:26,086 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:26,191 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:26,294 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:26,398 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:26,501 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:26,602 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:26,702 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:26,808 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:26,913 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:27,019 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:27,125 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:27,227 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:27,328 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:27,434 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:27,540 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:27,645 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:27,749 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:27,855 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:27,961 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:28,064 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:28,165 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:28,268 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:28,374 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:28,479 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:28,585 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:28,689 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:28,794 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:28,900 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:29,006 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:29,109 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:29,215 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:29,321 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:29,422 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:29,526 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:29,631 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:29,734 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:29,839 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:29,943 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:30,048 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:30,154 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:30,255 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:30,361 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:30,465 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:30,571 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:30,676 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:30,782 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:30,884 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:30,988 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:31,093 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:31,198 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:31,304 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:31,410 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:31,514 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:31,620 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:31,722 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:31,823 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:31,925 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:32,031 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:32,137 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:32,238 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:32,341 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:32,443 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:32,548 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:32,654 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:32,760 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:32,865 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:32,970 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:33,074 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:33,179 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:33,283 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:33,389 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:33,494 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:33,600 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:33,706 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:33,812 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:33,917 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:34,023 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:34,129 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:34,234 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:34,340 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:34,442 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:34,548 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:34,650 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:34,756 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:34,859 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:34,965 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:35,066 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:35,171 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:35,274 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:35,379 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:35,485 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:35,587 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:35,692 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:35,798 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:35,903 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:36,005 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:36,111 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:36,213 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:36,319 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:36,424 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:36,527 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:36,633 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:36,738 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:36,844 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:36,950 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:37,051 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:37,155 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:37,259 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:37,364 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:37,470 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:37,571 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:37,674 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:37,776 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:37,878 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:37,980 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:38,085 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:38,187 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:38,293 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:38,398 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:38,503 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:38,609 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:38,714 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:38,819 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:38,925 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:39,029 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:39,131 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:39,237 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:39,339 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:39,444 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:39,550 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:39,652 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:39,757 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:39,863 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:39,964 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:40,070 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:40,175 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:40,281 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:40,387 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:40,489 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:40,594 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:40,700 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:40,803 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:40,909 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:41,014 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:41,120 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:41,226 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:41,331 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:41,432 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:41,538 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:41,643 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:41,749 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:41,855 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:41,961 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:42,063 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:42,165 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:42,270 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:42,376 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:42,482 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:42,585 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:42,691 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:42,797 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:42,900 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:43,006 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:43,108 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:43,214 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:43,319 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:43,425 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:43,531 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:43,636 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:43,741 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:43,847 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:43,953 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:44,058 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:44,159 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:44,265 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:44,370 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:44,475 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:44,581 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:44,687 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:44,788 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:44,894 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:44,996 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:45,097 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:45,200 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:45,305 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:45,411 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:45,517 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:45,620 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:45,722 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:45,827 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:45,931 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:46,036 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:46,142 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:46,247 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:46,350 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:46,456 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:46,558 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:46,664 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:46,769 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:46,874 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:46,978 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:47,084 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:47,188 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:47,293 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:47,399 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:47,504 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:47,605 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:47,711 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:47,816 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:47,920 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:48,025 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:48,131 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:48,233 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:48,338 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:48,443 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:48,549 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:48,654 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:48,755 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:48,857 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:48,963 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:49,068 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:49,174 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:49,278 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:49,383 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:49,488 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:49,594 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:49,696 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:49,799 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:49,901 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:50,007 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:50,112 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:50,217 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:50,323 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:50,425 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:50,528 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:50,633 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:50,734 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:50,840 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:50,946 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:51,051 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:51,157 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:51,262 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:51,365 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:51,471 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:51,576 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:51,680 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:51,786 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:51,891 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:51,993 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:52,096 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:52,202 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:52,307 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:52,413 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:52,519 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:52,625 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:52,731 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:52,836 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:52,942 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:53,044 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:53,147 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:53,253 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:53,358 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:53,464 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:53,569 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:53,675 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:53,779 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:53,882 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:53,988 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:54,094 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:54,197 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:54,303 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:54,405 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:54,511 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:54,616 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:54,722 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:54,828 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:54,931 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:55,037 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:55,143 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:55,246 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:55,347 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:55,449 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:55,554 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:55,659 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:55,765 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:55,870 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:55,976 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:56,082 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:56,188 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:56,291 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:56,397 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:56,503 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:56,609 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:56,710 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:56,814 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:56,918 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:57,022 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:57,123 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:57,225 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:57,326 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:57,432 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:57,538 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:57,643 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:57,748 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:57,853 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:57,958 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:58,064 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:58,169 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:58,270 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:58,376 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:58,481 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:58,587 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:58,691 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:58,797 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:58,903 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:59,009 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:59,114 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:59,219 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:59,322 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:59,427 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:59,533 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:59,639 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:59,742 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:59,843 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:57:59,947 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:00,051 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:00,154 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:00,260 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:00,365 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:00,471 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:00,576 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:00,680 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:00,786 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:00,887 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:00,993 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:01,099 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:01,203 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:01,305 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:01,406 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:01,510 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:01,614 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:01,719 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:01,825 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:01,929 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:02,035 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:02,140 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:02,246 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:02,352 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:02,458 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:02,558 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:02,664 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:02,766 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:02,871 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:02,977 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:03,081 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:03,187 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:03,293 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:03,397 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:03,502 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:03,604 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:03,706 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:03,809 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:03,913 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:04,019 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:04,124 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:04,230 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:04,336 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:04,441 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:04,547 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:04,648 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:04,754 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:04,860 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:04,966 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:05,072 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:05,177 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:05,280 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:05,386 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:05,491 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:05,597 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:05,699 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:05,805 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:05,911 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:06,016 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:06,122 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:06,226 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:06,330 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:06,435 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:06,537 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:06,642 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:06,747 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:06,852 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:06,958 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:07,063 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:07,169 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:07,272 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:07,376 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:07,480 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:07,585 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:07,691 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:07,792 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:07,897 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:08,003 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:08,108 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 18:58:08,214 - WasteSorter - ERROR - Arduino monitoring error: [Errno 6] Device not configured
+2025-03-15 19:05:47,881 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 19:05:47,887 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 19:05:47,887 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'cans', '2': 'garbage', '3': 'recycling'}
+2025-03-15 19:05:47,887 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 19:05:54,995 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 19:05:54,996 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
+2025-03-15 19:19:22,513 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 19:19:22,519 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 19:19:22,519 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'cans', '2': 'garbage', '3': 'recycling'}
+2025-03-15 19:19:22,520 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 19:19:31,261 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 19:19:31,262 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
+2025-03-15 19:53:38,121 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-15 19:53:38,126 - WasteSorter - INFO - Loaded custom model: models/latest_model.h5
+2025-03-15 19:53:38,127 - WasteSorter - INFO - Loaded class mapping: {'0': 'can', '1': 'cans', '2': 'garbage', '3': 'recycling'}
+2025-03-15 19:53:38,127 - WasteSorter - INFO - Loaded counts from /Users/bradleynguyen/Desktop/Projects/cuHacking/data/counts.json
+2025-03-15 19:53:45,827 - WasteSorter - INFO - Camera resolution set to 1920.0x1080.0
+2025-03-15 19:53:45,828 - WasteSorter - INFO - Arduino info: Waste Sorter Arduino System v1.0
