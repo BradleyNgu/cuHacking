@@ -644,8 +644,8 @@ class WasteSorterApp:
             class_name = self.class_mapping.get(str(predicted_class), f"Class {predicted_class}")
             sort_as = "Can" if "can" in class_name.lower() else "Recycling" if "recycling" in class_name.lower() else "Garbage"
 
-            # If confidence is ≥ 85% and classification is stable, track time
-            if confidence >= 0.85:
+            # If confidence is ≥ 90% and classification is stable, track time
+            if confidence >= 0.90:
                 if self.current_classification == sort_as:
                     # Classification is the same as last time, check if 5 seconds have passed
                     if self.last_high_confidence_time and (time.time() - self.last_high_confidence_time >= self.min_confidence_time):

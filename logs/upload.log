@@ -323,3 +323,376 @@
 2025-03-16 00:28:28,383 - INFO - Upload successful: Processed 1 events and 2 statistics records
 2025-03-16 00:28:28,384 - INFO - Configuration saved
 2025-03-16 00:28:28,384 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 10:56:35,301 - INFO - Configuration loaded
+2025-03-16 10:56:35,301 - INFO - Starting upload (last upload: 2025-03-16T00:28:24.090112)
+2025-03-16 10:56:35,301 - INFO - Querying events newer than 2025-03-16T00:28:24.090112
+2025-03-16 10:56:35,301 - INFO - Most recent event timestamp: 2025-03-16T10:56:31.508247
+2025-03-16 10:56:35,301 - INFO - Found 1 new events since 2025-03-16T00:28:24.090112
+2025-03-16 10:56:35,302 - INFO - Retrieved 2 daily statistics records
+2025-03-16 10:56:35,302 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 10:56:36,281 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 10:56:36,283 - INFO - Configuration saved
+2025-03-16 10:56:36,283 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:15:11,836 - INFO - Configuration loaded
+2025-03-16 12:15:11,836 - INFO - Starting upload (last upload: 2025-03-16T10:56:31.508247)
+2025-03-16 12:15:11,836 - INFO - Querying events newer than 2025-03-16T10:56:31.508247
+2025-03-16 12:15:11,837 - INFO - Most recent event timestamp: 2025-03-16T12:15:08.158089
+2025-03-16 12:15:11,837 - INFO - Found 1 new events since 2025-03-16T10:56:31.508247
+2025-03-16 12:15:11,837 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:15:11,837 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:15:19,230 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:15:19,232 - INFO - Configuration saved
+2025-03-16 12:15:19,232 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:15:24,225 - INFO - Configuration loaded
+2025-03-16 12:15:24,225 - INFO - Starting upload (last upload: 2025-03-16T12:15:08.158089)
+2025-03-16 12:15:24,225 - INFO - Querying events newer than 2025-03-16T12:15:08.158089
+2025-03-16 12:15:24,225 - INFO - Most recent event timestamp: 2025-03-16T12:15:20.518006
+2025-03-16 12:15:24,225 - INFO - Found 1 new events since 2025-03-16T12:15:08.158089
+2025-03-16 12:15:24,225 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:15:24,225 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:15:24,860 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:15:24,861 - INFO - Configuration saved
+2025-03-16 12:15:24,861 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:18:21,311 - INFO - Configuration loaded
+2025-03-16 12:18:21,311 - INFO - Starting upload (last upload: 2025-03-16T12:15:20.518006)
+2025-03-16 12:18:21,311 - INFO - Querying events newer than 2025-03-16T12:15:20.518006
+2025-03-16 12:18:21,311 - INFO - Most recent event timestamp: 2025-03-16T12:18:17.591607
+2025-03-16 12:18:21,311 - INFO - Found 1 new events since 2025-03-16T12:15:20.518006
+2025-03-16 12:18:21,312 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:18:21,312 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:18:22,112 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:18:22,112 - INFO - Configuration saved
+2025-03-16 12:18:22,112 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:18:45,154 - INFO - Configuration loaded
+2025-03-16 12:18:45,155 - INFO - Starting upload (last upload: 2025-03-16T12:18:17.591607)
+2025-03-16 12:18:45,155 - INFO - Querying events newer than 2025-03-16T12:18:17.591607
+2025-03-16 12:18:45,155 - INFO - Most recent event timestamp: 2025-03-16T12:18:41.387233
+2025-03-16 12:18:45,155 - INFO - Found 1 new events since 2025-03-16T12:18:17.591607
+2025-03-16 12:18:45,155 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:18:45,155 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:18:45,354 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:18:45,354 - INFO - Configuration saved
+2025-03-16 12:18:45,355 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:25:22,331 - INFO - Configuration loaded
+2025-03-16 12:25:22,332 - INFO - Starting upload (last upload: 2025-03-16T12:18:41.387233)
+2025-03-16 12:25:22,332 - INFO - Querying events newer than 2025-03-16T12:18:41.387233
+2025-03-16 12:25:22,332 - INFO - Most recent event timestamp: 2025-03-16T12:25:18.619095
+2025-03-16 12:25:22,332 - INFO - Found 1 new events since 2025-03-16T12:18:41.387233
+2025-03-16 12:25:22,332 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:25:22,332 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:25:23,095 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:25:23,095 - INFO - Configuration saved
+2025-03-16 12:25:23,095 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:27:01,621 - INFO - Configuration loaded
+2025-03-16 12:27:01,621 - INFO - Starting upload (last upload: 2025-03-16T12:25:18.619095)
+2025-03-16 12:27:01,622 - INFO - Querying events newer than 2025-03-16T12:25:18.619095
+2025-03-16 12:27:01,622 - INFO - Most recent event timestamp: 2025-03-16T12:26:57.890944
+2025-03-16 12:27:01,622 - INFO - Found 1 new events since 2025-03-16T12:25:18.619095
+2025-03-16 12:27:01,622 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:27:01,622 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:27:02,120 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:27:02,121 - INFO - Configuration saved
+2025-03-16 12:27:02,121 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:27:20,132 - INFO - Configuration loaded
+2025-03-16 12:27:20,132 - INFO - Starting upload (last upload: 2025-03-16T12:26:57.890944)
+2025-03-16 12:27:20,132 - INFO - Querying events newer than 2025-03-16T12:26:57.890944
+2025-03-16 12:27:20,132 - INFO - Most recent event timestamp: 2025-03-16T12:27:16.429874
+2025-03-16 12:27:20,132 - INFO - Found 1 new events since 2025-03-16T12:26:57.890944
+2025-03-16 12:27:20,133 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:27:20,133 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:27:20,355 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:27:20,355 - INFO - Configuration saved
+2025-03-16 12:27:20,355 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:28:01,874 - INFO - Configuration loaded
+2025-03-16 12:28:01,874 - INFO - Starting upload (last upload: 2025-03-16T12:27:16.429874)
+2025-03-16 12:28:01,874 - INFO - Querying events newer than 2025-03-16T12:27:16.429874
+2025-03-16 12:28:01,875 - INFO - Most recent event timestamp: 2025-03-16T12:27:58.149742
+2025-03-16 12:28:01,875 - INFO - Found 1 new events since 2025-03-16T12:27:16.429874
+2025-03-16 12:28:01,875 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:28:01,875 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:28:03,550 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:28:03,551 - INFO - Configuration saved
+2025-03-16 12:28:03,551 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:28:42,017 - INFO - Configuration loaded
+2025-03-16 12:28:42,017 - INFO - Starting upload (last upload: 2025-03-16T12:27:58.149742)
+2025-03-16 12:28:42,017 - INFO - Querying events newer than 2025-03-16T12:27:58.149742
+2025-03-16 12:28:42,017 - INFO - Most recent event timestamp: 2025-03-16T12:28:38.276106
+2025-03-16 12:28:42,017 - INFO - Found 1 new events since 2025-03-16T12:27:58.149742
+2025-03-16 12:28:42,017 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:28:42,017 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:28:42,567 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:28:42,568 - INFO - Configuration saved
+2025-03-16 12:28:42,568 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:51:12,373 - INFO - Configuration loaded
+2025-03-16 12:51:12,373 - INFO - Starting upload (last upload: 2025-03-16T12:28:38.276106)
+2025-03-16 12:51:12,373 - INFO - Querying events newer than 2025-03-16T12:28:38.276106
+2025-03-16 12:51:12,373 - INFO - Most recent event timestamp: 2025-03-16T12:51:08.609866
+2025-03-16 12:51:12,374 - INFO - Found 1 new events since 2025-03-16T12:28:38.276106
+2025-03-16 12:51:12,374 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:51:12,374 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:51:12,811 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:51:12,812 - INFO - Configuration saved
+2025-03-16 12:51:12,812 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:51:17,477 - INFO - Configuration loaded
+2025-03-16 12:51:17,477 - INFO - Starting upload (last upload: 2025-03-16T12:51:08.609866)
+2025-03-16 12:51:17,477 - INFO - Querying events newer than 2025-03-16T12:51:08.609866
+2025-03-16 12:51:17,478 - INFO - Most recent event timestamp: 2025-03-16T12:51:13.768707
+2025-03-16 12:51:17,478 - INFO - Found 1 new events since 2025-03-16T12:51:08.609866
+2025-03-16 12:51:17,478 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:51:17,478 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:51:17,745 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:51:17,745 - INFO - Configuration saved
+2025-03-16 12:51:17,745 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:51:26,645 - INFO - Configuration loaded
+2025-03-16 12:51:26,645 - INFO - Starting upload (last upload: 2025-03-16T12:51:13.768707)
+2025-03-16 12:51:26,645 - INFO - Querying events newer than 2025-03-16T12:51:13.768707
+2025-03-16 12:51:26,646 - INFO - Most recent event timestamp: 2025-03-16T12:51:23.006472
+2025-03-16 12:51:26,646 - INFO - Found 1 new events since 2025-03-16T12:51:13.768707
+2025-03-16 12:51:26,646 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:51:26,646 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:51:26,917 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:51:26,917 - INFO - Configuration saved
+2025-03-16 12:51:26,918 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:53:48,759 - INFO - Configuration loaded
+2025-03-16 12:53:48,759 - INFO - Starting upload (last upload: 2025-03-16T12:51:23.006472)
+2025-03-16 12:53:48,759 - INFO - Querying events newer than 2025-03-16T12:51:23.006472
+2025-03-16 12:53:48,760 - INFO - Most recent event timestamp: 2025-03-16T12:53:44.992116
+2025-03-16 12:53:48,760 - INFO - Found 1 new events since 2025-03-16T12:51:23.006472
+2025-03-16 12:53:48,760 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:53:48,760 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:53:49,528 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:53:49,528 - INFO - Configuration saved
+2025-03-16 12:53:49,528 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:55:41,355 - INFO - Configuration loaded
+2025-03-16 12:55:41,355 - INFO - Starting upload (last upload: 2025-03-16T12:53:44.992116)
+2025-03-16 12:55:41,355 - INFO - Querying events newer than 2025-03-16T12:53:44.992116
+2025-03-16 12:55:41,355 - INFO - Most recent event timestamp: 2025-03-16T12:55:37.675517
+2025-03-16 12:55:41,355 - INFO - Found 1 new events since 2025-03-16T12:53:44.992116
+2025-03-16 12:55:41,355 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:55:41,355 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:55:42,014 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:55:42,014 - INFO - Configuration saved
+2025-03-16 12:55:42,014 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:55:51,110 - INFO - Configuration loaded
+2025-03-16 12:55:51,110 - INFO - Starting upload (last upload: 2025-03-16T12:55:37.675517)
+2025-03-16 12:55:51,110 - INFO - Querying events newer than 2025-03-16T12:55:37.675517
+2025-03-16 12:55:51,110 - INFO - Most recent event timestamp: 2025-03-16T12:55:47.416466
+2025-03-16 12:55:51,110 - INFO - Found 1 new events since 2025-03-16T12:55:37.675517
+2025-03-16 12:55:51,110 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:55:51,110 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:55:51,853 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:55:51,853 - INFO - Configuration saved
+2025-03-16 12:55:51,853 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 12:56:02,275 - INFO - Configuration loaded
+2025-03-16 12:56:02,275 - INFO - Starting upload (last upload: 2025-03-16T12:55:47.416466)
+2025-03-16 12:56:02,275 - INFO - Querying events newer than 2025-03-16T12:55:47.416466
+2025-03-16 12:56:02,275 - INFO - Most recent event timestamp: 2025-03-16T12:55:58.627600
+2025-03-16 12:56:02,276 - INFO - Found 1 new events since 2025-03-16T12:55:47.416466
+2025-03-16 12:56:02,276 - INFO - Retrieved 2 daily statistics records
+2025-03-16 12:56:02,276 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 12:56:03,128 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 12:56:03,128 - INFO - Configuration saved
+2025-03-16 12:56:03,128 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:00:21,959 - INFO - Configuration loaded
+2025-03-16 13:00:21,960 - INFO - Starting upload (last upload: 2025-03-16T12:55:58.627600)
+2025-03-16 13:00:21,960 - INFO - Querying events newer than 2025-03-16T12:55:58.627600
+2025-03-16 13:00:21,960 - INFO - Most recent event timestamp: 2025-03-16T13:00:18.280828
+2025-03-16 13:00:21,960 - INFO - Found 1 new events since 2025-03-16T12:55:58.627600
+2025-03-16 13:00:21,960 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:00:21,960 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:00:34,694 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:00:34,695 - INFO - Configuration saved
+2025-03-16 13:00:34,695 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:01:02,825 - INFO - Configuration loaded
+2025-03-16 13:01:02,825 - INFO - Starting upload (last upload: 2025-03-16T13:00:18.280828)
+2025-03-16 13:01:02,825 - INFO - Querying events newer than 2025-03-16T13:00:18.280828
+2025-03-16 13:01:02,826 - INFO - Most recent event timestamp: 2025-03-16T13:00:59.125426
+2025-03-16 13:01:02,826 - INFO - Found 1 new events since 2025-03-16T13:00:18.280828
+2025-03-16 13:01:02,826 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:01:02,826 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:01:03,579 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:01:03,579 - INFO - Configuration saved
+2025-03-16 13:01:03,579 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:04:03,394 - INFO - Configuration loaded
+2025-03-16 13:04:03,394 - INFO - Starting upload (last upload: 2025-03-16T13:00:59.125426)
+2025-03-16 13:04:03,395 - INFO - Querying events newer than 2025-03-16T13:00:59.125426
+2025-03-16 13:04:03,395 - INFO - Most recent event timestamp: 2025-03-16T13:03:59.659490
+2025-03-16 13:04:03,395 - INFO - Found 1 new events since 2025-03-16T13:00:59.125426
+2025-03-16 13:04:03,395 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:04:03,395 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:04:04,292 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:04:04,293 - INFO - Configuration saved
+2025-03-16 13:04:04,293 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:04:14,827 - INFO - Configuration loaded
+2025-03-16 13:04:14,827 - INFO - Starting upload (last upload: 2025-03-16T13:03:59.659490)
+2025-03-16 13:04:14,827 - INFO - Querying events newer than 2025-03-16T13:03:59.659490
+2025-03-16 13:04:14,827 - INFO - Most recent event timestamp: 2025-03-16T13:04:11.166553
+2025-03-16 13:04:14,827 - INFO - Found 1 new events since 2025-03-16T13:03:59.659490
+2025-03-16 13:04:14,828 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:04:14,828 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:04:15,062 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:04:15,062 - INFO - Configuration saved
+2025-03-16 13:04:15,062 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:09:02,723 - INFO - Configuration loaded
+2025-03-16 13:09:02,723 - INFO - Starting upload (last upload: 2025-03-16T13:04:11.166553)
+2025-03-16 13:09:02,723 - INFO - Querying events newer than 2025-03-16T13:04:11.166553
+2025-03-16 13:09:02,724 - INFO - Most recent event timestamp: 2025-03-16T13:08:59.014844
+2025-03-16 13:09:02,724 - INFO - Found 1 new events since 2025-03-16T13:04:11.166553
+2025-03-16 13:09:02,724 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:09:02,724 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:09:02,959 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:09:02,960 - INFO - Configuration saved
+2025-03-16 13:09:02,960 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:09:23,467 - INFO - Configuration loaded
+2025-03-16 13:09:23,467 - INFO - Starting upload (last upload: 2025-03-16T13:08:59.014844)
+2025-03-16 13:09:23,467 - INFO - Querying events newer than 2025-03-16T13:08:59.014844
+2025-03-16 13:09:23,467 - INFO - Most recent event timestamp: 2025-03-16T13:09:19.814035
+2025-03-16 13:09:23,468 - INFO - Found 1 new events since 2025-03-16T13:08:59.014844
+2025-03-16 13:09:23,468 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:09:23,468 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:09:23,832 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:09:23,832 - INFO - Configuration saved
+2025-03-16 13:09:23,832 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:11:06,505 - INFO - Configuration loaded
+2025-03-16 13:11:06,505 - INFO - Starting upload (last upload: 2025-03-16T13:09:19.814035)
+2025-03-16 13:11:06,506 - INFO - Querying events newer than 2025-03-16T13:09:19.814035
+2025-03-16 13:11:06,506 - INFO - Most recent event timestamp: 2025-03-16T13:11:02.780240
+2025-03-16 13:11:06,506 - INFO - Found 1 new events since 2025-03-16T13:09:19.814035
+2025-03-16 13:11:06,506 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:11:06,506 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:11:07,025 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:11:07,025 - INFO - Configuration saved
+2025-03-16 13:11:07,025 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:11:16,872 - INFO - Configuration loaded
+2025-03-16 13:11:16,872 - INFO - Starting upload (last upload: 2025-03-16T13:11:02.780240)
+2025-03-16 13:11:16,872 - INFO - Querying events newer than 2025-03-16T13:11:02.780240
+2025-03-16 13:11:16,872 - INFO - Most recent event timestamp: 2025-03-16T13:11:13.172400
+2025-03-16 13:11:16,872 - INFO - Found 1 new events since 2025-03-16T13:11:02.780240
+2025-03-16 13:11:16,873 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:11:16,873 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:11:17,161 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:11:17,162 - INFO - Configuration saved
+2025-03-16 13:11:17,162 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:13:14,726 - INFO - Configuration loaded
+2025-03-16 13:13:14,727 - INFO - Starting upload (last upload: 2025-03-16T13:11:13.172400)
+2025-03-16 13:13:14,727 - INFO - Querying events newer than 2025-03-16T13:11:13.172400
+2025-03-16 13:13:14,727 - INFO - Most recent event timestamp: 2025-03-16T13:13:10.994218
+2025-03-16 13:13:14,727 - INFO - Found 1 new events since 2025-03-16T13:11:13.172400
+2025-03-16 13:13:14,728 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:13:14,728 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:13:15,308 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:13:15,309 - INFO - Configuration saved
+2025-03-16 13:13:15,309 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:13:32,415 - INFO - Configuration loaded
+2025-03-16 13:13:32,415 - INFO - Starting upload (last upload: 2025-03-16T13:13:10.994218)
+2025-03-16 13:13:32,416 - INFO - Querying events newer than 2025-03-16T13:13:10.994218
+2025-03-16 13:13:32,416 - INFO - Most recent event timestamp: 2025-03-16T13:13:28.781775
+2025-03-16 13:13:32,416 - INFO - Found 1 new events since 2025-03-16T13:13:10.994218
+2025-03-16 13:13:32,416 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:13:32,416 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:13:32,802 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:13:32,802 - INFO - Configuration saved
+2025-03-16 13:13:32,802 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:14:11,921 - INFO - Configuration loaded
+2025-03-16 13:14:11,921 - INFO - Starting upload (last upload: 2025-03-16T13:13:28.781775)
+2025-03-16 13:14:11,921 - INFO - Querying events newer than 2025-03-16T13:13:28.781775
+2025-03-16 13:14:11,921 - INFO - Most recent event timestamp: 2025-03-16T13:14:08.182695
+2025-03-16 13:14:11,921 - INFO - Found 1 new events since 2025-03-16T13:13:28.781775
+2025-03-16 13:14:11,922 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:14:11,922 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:14:12,599 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:14:12,600 - INFO - Configuration saved
+2025-03-16 13:14:12,600 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:15:13,501 - INFO - Configuration loaded
+2025-03-16 13:15:13,501 - INFO - Starting upload (last upload: 2025-03-16T13:14:08.182695)
+2025-03-16 13:15:13,501 - INFO - Querying events newer than 2025-03-16T13:14:08.182695
+2025-03-16 13:15:13,501 - INFO - Most recent event timestamp: 2025-03-16T13:15:09.791464
+2025-03-16 13:15:13,501 - INFO - Found 1 new events since 2025-03-16T13:14:08.182695
+2025-03-16 13:15:13,501 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:15:13,502 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:15:43,992 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:15:43,993 - INFO - Configuration saved
+2025-03-16 13:15:43,993 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:48:48,890 - INFO - Configuration loaded
+2025-03-16 13:48:48,890 - INFO - Starting upload (last upload: 2025-03-16T13:15:09.791464)
+2025-03-16 13:48:48,891 - INFO - Querying events newer than 2025-03-16T13:15:09.791464
+2025-03-16 13:48:48,891 - INFO - Most recent event timestamp: 2025-03-16T13:48:45.151926
+2025-03-16 13:48:48,891 - INFO - Found 1 new events since 2025-03-16T13:15:09.791464
+2025-03-16 13:48:48,891 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:48:48,891 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:48:49,492 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:48:49,493 - INFO - Configuration saved
+2025-03-16 13:48:49,493 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:49:22,134 - INFO - Configuration loaded
+2025-03-16 13:49:22,134 - INFO - Starting upload (last upload: 2025-03-16T13:48:45.151926)
+2025-03-16 13:49:22,134 - INFO - Querying events newer than 2025-03-16T13:48:45.151926
+2025-03-16 13:49:22,134 - INFO - Most recent event timestamp: 2025-03-16T13:49:18.496670
+2025-03-16 13:49:22,134 - INFO - Found 1 new events since 2025-03-16T13:48:45.151926
+2025-03-16 13:49:22,135 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:49:22,135 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:49:22,741 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:49:22,742 - INFO - Configuration saved
+2025-03-16 13:49:22,742 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:49:38,302 - INFO - Configuration loaded
+2025-03-16 13:49:38,302 - INFO - Starting upload (last upload: 2025-03-16T13:49:18.496670)
+2025-03-16 13:49:38,302 - INFO - Querying events newer than 2025-03-16T13:49:18.496670
+2025-03-16 13:49:38,303 - INFO - Most recent event timestamp: 2025-03-16T13:49:34.668411
+2025-03-16 13:49:38,303 - INFO - Found 1 new events since 2025-03-16T13:49:18.496670
+2025-03-16 13:49:38,303 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:49:38,303 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:49:38,557 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:49:38,558 - INFO - Configuration saved
+2025-03-16 13:49:38,558 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:49:48,930 - INFO - Configuration loaded
+2025-03-16 13:49:48,930 - INFO - Starting upload (last upload: 2025-03-16T13:49:34.668411)
+2025-03-16 13:49:48,930 - INFO - Querying events newer than 2025-03-16T13:49:34.668411
+2025-03-16 13:49:48,930 - INFO - Most recent event timestamp: 2025-03-16T13:49:45.208910
+2025-03-16 13:49:48,930 - INFO - Found 1 new events since 2025-03-16T13:49:34.668411
+2025-03-16 13:49:48,931 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:49:48,931 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:49:49,554 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:49:49,554 - INFO - Configuration saved
+2025-03-16 13:49:49,555 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:56:57,696 - INFO - Configuration loaded
+2025-03-16 13:56:57,696 - INFO - Starting upload (last upload: 2025-03-16T13:49:45.208910)
+2025-03-16 13:56:57,696 - INFO - Querying events newer than 2025-03-16T13:49:45.208910
+2025-03-16 13:56:57,697 - INFO - Most recent event timestamp: 2025-03-16T13:56:54.006024
+2025-03-16 13:56:57,697 - INFO - Found 1 new events since 2025-03-16T13:49:45.208910
+2025-03-16 13:56:57,697 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:56:57,697 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:56:58,214 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:56:58,215 - INFO - Configuration saved
+2025-03-16 13:56:58,215 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 13:57:06,851 - INFO - Configuration loaded
+2025-03-16 13:57:06,851 - INFO - Starting upload (last upload: 2025-03-16T13:56:54.006024)
+2025-03-16 13:57:06,851 - INFO - Querying events newer than 2025-03-16T13:56:54.006024
+2025-03-16 13:57:06,851 - INFO - Most recent event timestamp: 2025-03-16T13:57:03.166866
+2025-03-16 13:57:06,851 - INFO - Found 1 new events since 2025-03-16T13:56:54.006024
+2025-03-16 13:57:06,851 - INFO - Retrieved 2 daily statistics records
+2025-03-16 13:57:06,851 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 13:57:07,152 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 13:57:07,152 - INFO - Configuration saved
+2025-03-16 13:57:07,152 - INFO - Upload complete - 1 events and 2 stats processed
+2025-03-16 14:13:58,615 - INFO - Configuration loaded
+2025-03-16 14:13:58,615 - INFO - Starting upload (last upload: 2025-03-16T13:57:03.166866)
+2025-03-16 14:13:58,615 - INFO - Querying events newer than 2025-03-16T13:57:03.166866
+2025-03-16 14:13:58,616 - INFO - Most recent event timestamp: 2025-03-16T14:13:54.858258
+2025-03-16 14:13:58,616 - INFO - Found 1 new events since 2025-03-16T13:57:03.166866
+2025-03-16 14:13:58,616 - INFO - Retrieved 2 daily statistics records
+2025-03-16 14:13:58,616 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 14:14:09,660 - INFO - Configuration loaded
+2025-03-16 14:14:09,660 - INFO - Starting upload (last upload: 2025-03-16T13:57:03.166866)
+2025-03-16 14:14:09,660 - INFO - Querying events newer than 2025-03-16T13:57:03.166866
+2025-03-16 14:14:09,660 - INFO - Most recent event timestamp: 2025-03-16T14:14:05.894837
+2025-03-16 14:14:09,660 - INFO - Found 2 new events since 2025-03-16T13:57:03.166866
+2025-03-16 14:14:09,660 - INFO - Retrieved 2 daily statistics records
+2025-03-16 14:14:09,660 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 2 events, 2 stats
+2025-03-16 14:14:28,693 - ERROR - Upload timed out
+2025-03-16 14:14:28,694 - INFO - Retry attempt 2/3...
+2025-03-16 14:14:33,699 - INFO - Uploading to http://everythingyoueverwantedtoknowaboutgarbagebutwereafraidtoask.co/upload_data.php: 1 events, 2 stats
+2025-03-16 14:14:39,149 - INFO - Upload successful: Processed 2 events and 2 statistics records
+2025-03-16 14:14:39,150 - INFO - Configuration saved
+2025-03-16 14:14:39,150 - INFO - Upload complete - 2 events and 2 stats processed
+2025-03-16 14:14:39,184 - INFO - Upload successful: Processed 1 events and 2 statistics records
+2025-03-16 14:14:39,185 - INFO - Configuration saved
+2025-03-16 14:14:39,185 - INFO - Upload complete - 1 events and 2 stats processed
