@@ -42,18 +42,13 @@ void loop() {
   if (Serial.available() > 0) {
     char command = Serial.read();
     
-    if (command == 'C') {
-      // Can recycling
-      Serial.println("STATUS:Sorting as can recycling");
-      sortItem(true);
-    }
-    else if (command == 'R') {
-      // Regular recycling
-      Serial.println("STATUS:Sorting as regular recycling");
+    if (command == 'R' || command == 'C') {
+      // Both 'R' (recycling) and 'C' (can) go to recycling
+      Serial.println("STATUS:Sorting as recycling");
       sortItem(true);
     } 
     else if (command == 'G') {
-      // Regular garbage
+      // Garbage
       Serial.println("STATUS:Sorting as garbage");
       sortItem(false);
     }
